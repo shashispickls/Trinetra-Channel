@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trinetra Channel — News Admin</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f4f6;color:#172033;font-family:Arial,"Noto Sans Devanagari","Mangal",sans-serif}
+header{background:#111827;color:#fff;padding:18px 16px}.wrap{max-width:850px;margin:auto}
+.brand{font-size:22px;font-weight:800}.sub{font-size:13px;color:#cbd5e1}
+.card{background:#fff;margin:18px auto;padding:20px;border-radius:16px;box-shadow:0 4px 18px #0001}
+label{display:block;font-weight:700;margin:14px 0 7px}input,textarea{width:100%;padding:13px;border:1px solid #d1d5db;border-radius:10px;font:inherit}
+textarea{min-height:180px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{border:0;border-radius:10px;padding:13px 16px;font-weight:800;cursor:pointer;margin:8px 6px 0 0}.primary{background:#dc2626;color:#fff}.secondary{background:#e5e7eb}
+.notice{background:#fff7ed;border-left:4px solid #f97316;padding:12px;margin:15px 0;font-size:14px}.preview{border:1px solid #e5e7eb;border-radius:12px;padding:16px;margin-top:15px}
+@media(max-width:650px){.row{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="wrap"><div class="brand">TRINETRA CHANNEL</div><div class="sub">मोबाइल न्यूज़ एडमिन</div></div></header>
+<main class="wrap"><section class="card">
+<h2>📰 नई खबर तैयार करें</h2>
+<div class="notice">यह सुरक्षित पैनल खबर की HTML फाइल तैयार करता है। इसमें GitHub password/token नहीं रखा गया है।</div>
+<label>खबर की Headline</label><input id="title" placeholder="खबर की मुख्य हेडलाइन">
+<div class="row"><div><label>स्थान</label><input id="place" placeholder="प्रतापगढ़"></div><div><label>तारीख</label><input id="date" type="date"></div></div>
+<label>पूरी खबर</label><textarea id="body" placeholder="यहाँ पूरी खबर paste करें..."></textarea>
+<label>फोटो (वैकल्पिक)</label><input id="photo" type="file" accept="image/*">
+<button class="primary" onclick="downloadNews()">📥 खबर की HTML डाउनलोड करें</button>
+<button class="secondary" onclick="saveDraft()">💾 Draft सेव करें</button>
+<button class="secondary" onclick="clearForm()">🗑️ साफ करें</button>
+<div id="preview" class="preview"></div>
+</section></main>
+<script>
+const $=id=>document.getElementById(id), esc=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+$("date").value=new Date().toISOString().slice(0,10);
+function paras(s){return s.trim().split(/\n\s*\n/).filter(Boolean).map(x=>"<p>"+esc(x).replace(/\n/g,"<br>")+"</p>").join("")}
+function preview(){ $("preview").innerHTML="<h2>"+esc($("title").value||"Headline")+"</h2><small>"+esc($("place").value||"स्थान")+" | "+esc($("date").value||"तारीख")+"</small>"+paras($("body").value||"खबर यहाँ दिखाई देगी।");}
+["title","place","date","body"].forEach(id=>$(id).addEventListener("input",preview));
+function saveDraft(){localStorage.setItem("trinetraDraft",JSON.stringify({title:$("title").value,place:$("place").value,date:$("date").value,body:$("body").value}));alert("Draft मोबाइल में सेव हो गया।")}
+function clearForm(){if(confirm("फॉर्म साफ करें?")){$("title").value="";$("place").value="";$("body").value="";$("photo").value="";preview()}}
+async function downloadNews(){
+ let t=$("title").value.trim(),p=$("place").value.trim(),d=$("date").value,b=$("body").value.trim();
+ if(!t||!b){alert("Headline और पूरी खबर भरना जरूरी है।");return}
+ let img="";let f=$("photo").files[0];
+ if(f)img=await new Promise(r=>{let x=new FileReader();x.onload=()=>r(x.result);x.readAsDataURL(f)});
+ let html='<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(t)+' | Trinetra Channel</title><style>body{margin:0;background:#f5f6f8;color:#182230;font-family:Arial,"Noto Sans Devanagari","Mangal",sans-serif;line-height:1.8}header{background:#111827;color:#fff;padding:15px}.wrap{max-width:850px;margin:auto;padding:0 16px}.brand{font-size:21px;font-weight:900}.tag{color:#fca5a5;font-size:13px}article{background:#fff;margin:25px auto;padding:25px;border-radius:15px;box-shadow:0 4px 18px #0001}h1{font-size:clamp(26px,5vw,42px);line-height:1.35}.date{color:#667085}.hero{width:100%;max-height:480px;object-fit:cover;border-radius:12px}footer{text-align:center;padding:25px;color:#667085}</style></head><body><header><div class="wrap"><div class="brand">TRINETRA CHANNEL</div><div class="tag">आपकी खबर, आपकी आवाज़</div></div></header><main class="wrap"><article><h1>'+esc(t)+'</h1><div class="date">'+esc(p)+' | '+esc(d)+'</div>'+(img?'<img class="hero" src="'+img+'" alt="खबर का फोटो">':"")+paras(b)+'</article></main><footer>© 2026 Trinetra Channel</footer></body></html>';
+ let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([html],{type:"text/html;charset=utf-8"}));a.download="Trinetra_News_"+d+".html";a.click();
+}
+let draft=localStorage.getItem("trinetraDraft");if(draft){try{let x=JSON.parse(draft);$("title").value=x.title||"";$("place").value=x.place||"";$("date").value=x.date||$("date").value;$("body").value=x.body||""}catch(e){}}preview();
+</script></body></html>
