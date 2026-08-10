@@ -3,185 +3,388 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Trinetra Channel | आपकी खबर, आपकी आवाज़</title>
 
-<style>
-*{box-sizing:border-box}
+<meta name="description" content="Trinetra Channel - आपकी खबर, आपकी आवाज़। देश, प्रदेश और स्थानीय खबरें।">
 
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f4f4f4;
-color:#111;
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
+body{
+    font-family:Arial, sans-serif;
+    background:#f3f3f3;
+    color:#222;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* HEADER */
 header{
-background:#111;
-color:#fff;
-text-align:center;
-padding:20px 15px;
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:18px 10px;
+    border-bottom:4px solid #e00000;
 }
 
 .logo{
-width:170px;
-height:170px;
-object-fit:contain;
-border-radius:50%;
-display:block;
-margin:auto;
+    width:95px;
+    height:95px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 10px;
+    border-radius:50%;
 }
 
-header h1{
-margin:12px 0 5px;
-font-size:30px;
+.channel-name{
+    font-size:30px;
+    font-weight:900;
+    color:#ffd900;
 }
 
-header p{
-margin:0;
-color:#ddd;
+.tagline{
+    font-size:16px;
+    margin-top:6px;
+    color:#fff;
 }
 
+/* NAVIGATION */
+nav{
+    background:#222;
+    color:#fff;
+    padding:12px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+nav a{
+    display:inline-block;
+    margin:5px 12px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#ffd900;
+}
+
+/* BREAKING NEWS */
+.breaking{
+    background:#e00000;
+    color:#fff;
+    padding:10px;
+    text-align:center;
+    font-weight:bold;
+}
+
+/* MAIN */
+.container{
+    max-width:1100px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+/* HERO */
 .hero{
-background:linear-gradient(135deg,#111,#3b0000);
-color:#fff;
-text-align:center;
-padding:50px 20px;
+    background:#111;
+    color:#fff;
+    padding:35px 20px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:25px;
 }
 
-.hero h2{
-font-size:32px;
-margin:0 0 12px;
+.hero h1{
+    font-size:32px;
+    margin-bottom:10px;
 }
 
 .hero p{
-font-size:18px;
-margin-bottom:25px;
+    font-size:18px;
+    line-height:1.6;
+}
+
+/* NEWS */
+.section-title{
+    font-size:25px;
+    border-left:6px solid #e00000;
+    padding-left:10px;
+    margin:25px 0 15px;
+}
+
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+}
+
+.news-card{
+    background:#fff;
+    border-radius:10px;
+    padding:18px;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+
+.news-card h2{
+    font-size:20px;
+    margin-bottom:10px;
+    color:#111;
+}
+
+.news-card p{
+    line-height:1.6;
+    color:#555;
+}
+
+.news-card .date{
+    color:#e00000;
+    font-size:13px;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+.buttons{
+    text-align:center;
+    margin:30px 0;
 }
 
 .btn{
-display:inline-block;
-padding:14px 22px;
-margin:6px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.youtube{
-background:#e60000;
-color:#fff;
+    display:inline-block;
+    padding:13px 22px;
+    margin:7px;
+    border-radius:7px;
+    color:#fff;
+    font-weight:bold;
 }
 
 .whatsapp{
-background:#20b858;
-color:#fff;
+    background:#25D366;
 }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:25px 15px;
+.youtube{
+    background:#e00000;
 }
 
-.card{
-background:#fff;
-padding:22px;
-margin-bottom:18px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
+.contact{
+    background:#111;
 }
 
-.card h3{
-margin-top:0;
-font-size:22px;
-}
-
+/* FOOTER */
 footer{
-background:#111;
-color:#fff;
-text-align:center;
-padding:20px;
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:7px 0;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    .channel-name{
+        font-size:25px;
+    }
+
+    .hero h1{
+        font-size:25px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    nav a{
+        margin:4px 7px;
+        font-size:14px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
 
-<img
-class="logo"
-alt="Trinetra Channel Logo"
-src="data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoIAAgAAkA4JaQAA3AA/vuUAAA=="
->
+    <img src="logo.png"
+         alt="Trinetra Channel Logo"
+         class="logo">
 
-<h1>TRINETRA CHANNEL</h1>
+    <div class="channel-name">
+        TRINETRA CHANNEL
+    </div>
 
-<p>आपकी खबर, आपकी आवाज़</p>
+    <div class="tagline">
+        आपकी खबर, आपकी आवाज़
+    </div>
 
 </header>
 
-<section class="hero">
+<!-- NAVIGATION -->
+<nav>
+    <a href="#home">होम</a>
+    <a href="#news">न्यूज़</a>
+    <a href="#about">हमारे बारे में</a>
+    <a href="#contact">संपर्क</a>
+</nav>
 
-<h2>त्रिनेत्र चैनल में आपका स्वागत है</h2>
-
-<p>स्थानीय, ताज़ा और महत्वपूर्ण खबरों से जुड़े रहें।</p>
-
-<a class="btn youtube"
-href="https://youtube.com/@trinetrachannel2574"
-target="_blank">
-▶ YouTube चैनल
-</a>
-
-<a class="btn whatsapp"
-href="https://wa.me/917390004446"
-target="_blank">
-📱 WhatsApp संपर्क
-</a>
-
-</section>
+<!-- BREAKING -->
+<div class="breaking">
+    🔴 BREAKING NEWS — त्रिनेत्र चैनल पर पढ़ें ताज़ा खबरें
+</div>
 
 <main class="container">
 
-<div class="card">
-<h3>📰 ताज़ा खबरें</h3>
-<p>
-अपने क्षेत्र की महत्वपूर्ण खबरें और अपडेट त्रिनेत्र चैनल पर पढ़ें।
-</p>
-</div>
+<!-- HERO -->
+<section class="hero" id="home">
 
-<div class="card">
-<h3>📺 हमारा YouTube चैनल</h3>
-<p>
-वीडियो खबरों और लाइव अपडेट के लिए हमारे YouTube चैनल से जुड़ें।
-</p>
+    <h1>Trinetra Channel</h1>
 
-<a class="btn youtube"
-href="https://youtube.com/@trinetrachannel2574"
-target="_blank">
-YouTube पर जाएँ
-</a>
-</div>
+    <p>
+        देश, प्रदेश और स्थानीय स्तर की महत्वपूर्ण खबरें
+        सबसे पहले और सबसे आसान भाषा में।
+    </p>
 
-<div class="card">
-<h3>📱 खबर भेजें</h3>
-<p>
-कोई खबर या सूचना हो तो WhatsApp पर संपर्क करें।
-</p>
+</section>
 
-<a class="btn whatsapp"
-href="https://wa.me/917390004446"
-target="_blank">
-WhatsApp पर संदेश भेजें
-</a>
-</div>
+<!-- NEWS -->
+<section id="news">
+
+    <h2 class="section-title">
+        📰 ताज़ा खबरें
+    </h2>
+
+    <div class="news-grid">
+
+        <article class="news-card">
+            <div class="date">आज की खबर</div>
+
+            <h2>
+                बाबा बेलखरनाथ धाम से जुड़ी महत्वपूर्ण खबर
+            </h2>
+
+            <p>
+                स्थानीय समस्याओं और जनहित के मुद्दों को
+                Trinetra Channel प्रमुखता से आपके सामने रखता है।
+            </p>
+        </article>
+
+
+        <article class="news-card">
+            <div class="date">स्थानीय समाचार</div>
+
+            <h2>
+                आपके क्षेत्र की खबर, सीधे आपकी आवाज़
+            </h2>
+
+            <p>
+                अपने क्षेत्र की खबरों और समस्याओं को
+                हम तक पहुंचाएं और जनहित की आवाज़ बनें।
+            </p>
+        </article>
+
+
+        <article class="news-card">
+            <div class="date">Trinetra Special</div>
+
+            <h2>
+                सच और निष्पक्ष खबरों के लिए जुड़े रहें
+            </h2>
+
+            <p>
+                Trinetra Channel का उद्देश्य महत्वपूर्ण
+                खबरों को लोगों तक सरल और तेज़ तरीके से पहुंचाना है।
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+    <h2 class="section-title">
+        ℹ️ हमारे बारे में
+    </h2>
+
+    <div class="news-card">
+
+        <h2>
+            Trinetra Channel
+        </h2>
+
+        <p>
+            Trinetra Channel एक डिजिटल न्यूज़ प्लेटफॉर्म है,
+            जहां आपको स्थानीय, प्रदेश और देश से जुड़ी
+            महत्वपूर्ण खबरें मिलेंगी।
+        </p>
+
+        <br>
+
+        <p>
+            हमारा उद्देश्य है — सही खबर को सही समय पर
+            लोगों तक पहुंचाना।
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- BUTTONS -->
+<section id="contact">
+
+    <h2 class="section-title">
+        📲 हमसे जुड़ें
+    </h2>
+
+    <div class="buttons">
+
+        <a class="btn whatsapp"
+           href="https://wa.me/917390004446"
+           target="_blank">
+            WhatsApp पर खबर भेजें
+        </a>
+
+        <a class="btn youtube"
+           href="https://youtube.com/@trinetrachannel2574"
+           target="_blank">
+            ▶ YouTube Channel
+        </a>
+
+    </div>
+
+</section>
 
 </main>
 
+
+<!-- FOOTER -->
 <footer>
-© 2026 Trinetra Channel
-<br>
-सच की आवाज़ • आपकी खबर
+
+    <p>
+        © 2026 Trinetra Channel
+    </p>
+
+    <p>
+        आपकी खबर, आपकी आवाज़
+    </p>
+
 </footer>
 
 </body>
