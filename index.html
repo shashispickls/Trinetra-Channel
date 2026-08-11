@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#dc2626">
+<meta name="description" content="Trinetra Channel - आपकी खबर, आपकी आवाज़">
+<title>Trinetra Channel | आपकी खबर, आपकी आवाज़</title>
+
+<!-- Google AdSense -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8892976990257509"
+crossorigin="anonymous"></script>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;background:#f4f5f7;color:#111827}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:auto;padding:0 18px}
+
+/* TOP BAR */
+.top{background:#070707;color:#fff;padding:8px 0;font-size:13px}
+.topin{display:flex;justify-content:space-between;align-items:center}
+.live{color:#fff;font-weight:800}.live i{display:inline-block;width:9px;height:9px;background:#ef1d25;border-radius:50%;margin-right:7px;animation:pulse 1s infinite}
+.social{display:flex;gap:8px}
+.social span{font-size:12px;opacity:.9}
+.clock{font-weight:900;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:1px}
+
+/* HEADER */
+header{background:#fff;position:sticky;top:0;z-index:50;box-shadow:0 3px 15px #0002}
+.head{min-height:104px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:82px;height:82px;object-fit:contain;border-radius:16px}
+.name{font-weight:1000;font-size:clamp(28px,4vw,46px);letter-spacing:-1px;display:inline-block;line-height:1;color:#050505;position:relative;animation:brandFloat 1.8s ease-in-out infinite,brandGlow 1.4s ease-in-out infinite}
+.name .red{color:#e21b23}
+.name .black{color:#050505}
+.name:after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:4px;border-radius:10px;background:linear-gradient(90deg,#e21b23,#ff6b00,#e21b23);animation:shine 1.2s linear infinite}
+.tag{margin-top:10px;color:#dc2626;font-weight:900;font-size:14px}
+.admin{background:#f59e0b;color:#111;padding:13px 20px;border-radius:10px;font-weight:900;font-size:16px;box-shadow:0 5px 15px #0002}
+.admin:hover{transform:translateY(-2px)}
+
+/* NAV */
+.nav{display:flex;gap:3px;overflow:auto;padding-bottom:10px}
+.nav a{white-space:nowrap;padding:10px 14px;border-radius:8px;font-weight:900}
+.nav a:hover{background:#e21b23;color:#fff}
+
+/* BREAKING */
+.break{background:linear-gradient(90deg,#e21b23,#a50000,#e21b23);background-size:200% 100%;color:#fff;padding:10px 0;font-weight:900;animation:breakBg 3s linear infinite}
+.breakin{display:flex;align-items:center;gap:20px}
+.breaklabel{font-size:18px;white-space:nowrap}
+
+/* HERO */
+.hero{background:
+radial-gradient(circle at 78% 45%,#ff2b2b55 0 7%,transparent 25%),
+radial-gradient(circle at 90% 80%,#e21b2330,transparent 28%),
+linear-gradient(120deg,#080808 0%,#171017 48%,#7d1118 100%);
+color:#fff;overflow:hidden}
+.hero .inner{min-height:390px;display:flex;align-items:center;position:relative}
+.heroText{max-width:680px;position:relative;z-index:2}
+.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.02;margin:0 0 18px;font-weight:1000}
+.hero h1 .yellow{color:#facc15;text-shadow:0 3px 20px #facc1544}
+.hero p{font-size:18px;color:#f3f4f6;line-height:1.7}
+.btn{display:inline-block;padding:13px 20px;border-radius:9px;font-weight:900;margin:8px 8px 0 0;transition:.25s}
+.primary{background:#f59e0b;color:#111}
+.secondary{border:1px solid #ffffff88;background:#ffffff0d;color:#fff}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px #0004}
+.globe{position:absolute;right:-70px;width:470px;height:470px;border:2px solid #ff333388;border-radius:50%;box-shadow:0 0 70px #e21b2355,inset 0 0 60px #e21b2333;animation:globeSpin 9s linear infinite}
+.globe:before,.globe:after{content:"";position:absolute;border:2px solid #ff333355;border-radius:50%;inset:12% 28%}
+.globe:after{inset:28% 12%}
+.globeDot{position:absolute;width:12px;height:12px;background:#ff3333;border-radius:50%;box-shadow:0 0 18px #ff3333;top:18%;left:55%;animation:dotMove 3s ease-in-out infinite}
+
+/* NEWS */
+section{padding:38px 0}
+.title{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #e21b23;margin-bottom:18px}
+.title h2{margin:0 0 8px;font-size:30px}
+.seeall{color:#e21b23;font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;box-shadow:0 5px 18px #0000000c;transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 14px 30px #0002}
+.pic{height:210px;background:linear-gradient(135deg,#111827,#991b1b);display:flex;align-items:center;justify-content:center;color:#fff;font-size:45px;background-size:cover;background-position:center}
+.content{padding:16px}
+.cat{display:inline-block;background:#e21b23;color:#fff;padding:4px 9px;border-radius:5px;font-size:12px;font-weight:900}
+.card h3{font-size:20px;line-height:1.45;margin:9px 0}
+.card p{color:#4b5563;font-size:15px;line-height:1.7;margin:0}
+.date{display:block;color:#98a2b3;font-size:12px;margin-top:10px}
+.readmore{display:inline-block;color:#dc2626;font-weight:900;margin-top:10px}
+.status{background:#fff7ed;border-left:4px solid #f97316;padding:13px;border-radius:8px;color:#7c2d12}
+
+/* ABOUT */
+.aboutGrid{display:grid;grid-template-columns:1.7fr 1fr;gap:22px}
+.aboutbox,.contact{background:#fff;border-radius:16px;padding:24px;box-shadow:0 5px 18px #0001}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:#f8fafc;border-radius:12px;padding:17px;text-align:center}
+.stat b{display:block;color:#dc2626;font-size:28px}
+.contact{background:linear-gradient(135deg,#0b0d13,#171923);color:#fff}
+.contact p{color:#d1d5db}
+
+/* FOOTER */
+footer{background:#070707;color:#cbd5e1;text-align:center;padding:28px 15px}
+
+/* ANIMATIONS */
+@keyframes pulse{50%{transform:scale(1.5);box-shadow:0 0 12px #ef1d25}}
+@keyframes brandFloat{0%,100%{transform:translateY(0) scale(1)}35%{transform:translateY(-4px) scale(1.02)}70%{transform:translateY(2px) scale(.99)}}
+@keyframes brandGlow{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 18px #e21b2355,0 0 32px #ff4d0040}}
+@keyframes shine{0%{transform:scaleX(.2);opacity:.3}50%{transform:scaleX(1);opacity:1}100%{transform:scaleX(.2);opacity:.3}}
+@keyframes breakBg{to{background-position:200% 0}}
+@keyframes globeSpin{to{transform:rotate(360deg)}}
+@keyframes dotMove{50%{transform:translate(60px,90px) scale(1.5)}}
+@media(max-width:850px){
+ .head{min-height:88px}.logo{width:62px;height:62px}.name{font-size:29px}.tag{font-size:11px}.admin{padding:10px 13px}
+ .grid{grid-template-columns:1fr 1fr}.aboutGrid{grid-template-columns:1fr}.globe{opacity:.3;right:-170px}
+}
+@media(max-width:600px){
+ .topin{display:block}.social{display:none}.clock{margin-top:5px}.head{align-items:center}.brand{gap:9px}.logo{width:54px;height:54px}.name{font-size:22px}.tag{font-size:9px;margin-top:7px}
+ .admin{font-size:13px;padding:9px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.hero .inner{min-height:350px}.hero h1{font-size:43px}.hero p{font-size:15px}.breaklabel{font-size:14px}
+}
+@media(max-width:420px){.stats{grid-template-columns:1fr}.wrap{padding:0 12px}}
+</style>
+</head>
+
+<body>
+<div class="top">
+ <div class="wrap topin">
+  <div class="live"><i></i> LIVE &nbsp; Trinetra Channel • आपकी खबर, आपकी आवाज़</div>
+  <div class="clock" id="liveClock">--:--:--</div>
+  <div class="social">YouTube &nbsp; Facebook &nbsp; Instagram &nbsp; X</div>
+ </div>
+</div>
+
+<header>
+ <div class="wrap head">
+  <a class="brand" href="#">
+   <img class="logo" src="logo.png" alt="Trinetra Channel Logo">
+   <div>
+    <div class="name"><span class="red">TRINETRA</span> <span class="black">CHANNEL</span></div>
+    <div class="tag">आपकी खबर, आपकी आवाज़</div>
+   </div>
+  </a>
+  <a class="admin" href="Trinetra_Firebase_Admin.html">🔐 Admin</a>
+ </div>
+
+ <nav class="wrap nav">
+  <a href="#latest">⌂ ताज़ा खबर</a>
+  <a href="#national">देश</a>
+  <a href="#state">प्रदेश</a>
+  <a href="#local">स्थानीय</a>
+  <a href="#youtube">YouTube</a>
+  <a href="#about">हमारे बारे में</a>
+ </nav>
+</header>
+
+<div class="break">
+ <div class="wrap breakin">
+  <span class="breaklabel">⚡ BREAKING NEWS</span>
+  <span>Trinetra Channel पर पढ़िए महत्वपूर्ण खबरें सबसे पहले</span>
+ </div>
+</div>
+
+<section class="hero">
+ <div class="wrap inner">
+  <div class="heroText">
+   <h1>खबर वही,<br><span class="yellow">जिस पर भरोसा हो।</span></h1>
+   <p>देश, प्रदेश और स्थानीय स्तर की महत्वपूर्ण खबरें सबसे पहले और आसान भाषा में।</p>
+   <a class="btn primary" href="#latest">📰 ताज़ा खबरें देखें</a>
+   <a class="btn secondary" href="https://www.youtube.com/@trinetrachannel2574" target="_blank" rel="noopener">▶ YouTube चैनल</a>
+  </div>
+  <div class="globe"><span class="globeDot"></span></div>
+ </div>
+</section>
+
+<section id="latest">
+ <div class="wrap">
+  <div class="title"><h2>ताज़ा खबरें</h2><a class="seeall" href="#latest">सभी देखें →</a></div>
+  <div class="grid" id="newsGrid"><p class="status">खबरें लोड हो रही हैं...</p></div>
+ </div>
+</section>
+
+<section id="national"><div class="wrap"><div class="title"><h2>देश</h2></div><p>देश से जुड़ी महत्वपूर्ण खबरें जल्द यहां दिखाई जाएंगी।</p></div></section>
+<section id="state"><div class="wrap"><div class="title"><h2>प्रदेश</h2></div><p>प्रदेश की ताज़ा खबरें यहां दिखाई जाएंगी।</p></div></section>
+<section id="local"><div class="wrap"><div class="title"><h2>स्थानीय</h2></div><p>स्थानीय खबरें यहां दिखाई जाएंगी।</p></div></section>
+
+<section id="youtube">
+ <div class="wrap">
+  <div class="title"><h2>YouTube चैनल</h2></div>
+  <div class="stats">
+   <div class="stat"><b>2.72K+</b>Subscribers</div>
+   <div class="stat"><b>338</b>Videos</div>
+   <div class="stat"><b>292K+</b>Views</div>
+  </div>
+  <p><a class="btn primary" href="https://www.youtube.com/@trinetrachannel2574" target="_blank" rel="noopener">YouTube पर जाएँ →</a></p>
+ </div>
+</section>
+
+<section id="about">
+ <div class="wrap">
+  <div class="title"><h2>हमारे बारे में</h2></div>
+  <div class="aboutGrid">
+   <div class="aboutbox"><p>Trinetra Channel का उद्देश्य देश, प्रदेश और स्थानीय स्तर की महत्वपूर्ण खबरों को सरल, स्पष्ट और जिम्मेदार तरीके से पाठकों तक पहुंचाना है।</p></div>
+   <div class="aboutbox">
+    <div class="stats">
+     <div class="stat"><b>1M+</b>पाठक</div>
+     <div class="stat"><b>250K+</b>YouTube</div>
+     <div class="stat"><b>500+</b>खबरें</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <div class="contact">
+   <h2>📞 खबर भेजें / संपर्क करें</h2>
+   <p>खबर, सुझाव या विज्ञापन से संबंधित जानकारी के लिए संपर्क करें।</p>
+   <p><strong>WhatsApp: 7390004446</strong></p>
+   <a class="btn primary" href="mailto:cmspratapgarh@gmail.com">ई-मेल करें</a>
+  </div>
+ </div>
+</section>
+
+<footer>© <span id="year"></span> Trinetra Channel • सर्वाधिकार सुरक्षित।</footer>
+
+<script>
+function updateLiveClock(){
+ const now=new Date();
+ const time=new Intl.DateTimeFormat("hi-IN",{
+  hour:"2-digit",minute:"2-digit",second:"2-digit",
+  hour12:true,timeZone:"Asia/Kolkata"
+ }).format(now);
+ const date=new Intl.DateTimeFormat("hi-IN",{
+  weekday:"short",day:"2-digit",month:"short",year:"numeric",
+  timeZone:"Asia/Kolkata"
+ }).format(now);
+ const el=document.getElementById("liveClock");
+ if(el) el.textContent="🕒 "+time+" • "+date;
+}
+updateLiveClock();
+setInterval(updateLiveClock,1000);
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+import { getFirestore, collection, query, orderBy, limit, onSnapshot }
+from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+const firebaseConfig={
+ apiKey:"AIzaSyBUNUxgHf1pyNM9sjeOgYQaAwoAYff0J1Q",
+ authDomain:"trinetra-channel.firebaseapp.com",
+ projectId:"trinetra-channel",
+ storageBucket:"trinetra-channel.firebasestorage.app",
+ messagingSenderId:"262471448634",
+ appId:"1:262471448634:web:dde9e14c8b6a4ab761dd03",
+ measurementId:"G-YP35VXVMS6"
+};
+
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
+const grid=document.getElementById("newsGrid");
+document.getElementById("year").textContent=new Date().getFullYear();
+
+function esc(v){
+ return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+
+function render(items){
+ if(!items.length){
+  grid.innerHTML='<p class="status">अभी कोई खबर प्रकाशित नहीं है।</p>';
+  return;
+ }
+ grid.innerHTML=items.map(n=>{
+  const photo=n.photo||n.imageUrl||"";
+  const title=n.title||"बिना शीर्षक";
+  const body=n.body||n.description||"";
+  const place=n.place||"Trinetra Channel";
+  const date=n.date||"";
+  return `<article class="card">
+   <div class="pic" ${photo?`style="background-image:url('${String(photo).replaceAll("'","%27")}' )"`:""}>${photo?"":"📰"}</div>
+   <div class="content">
+    <span class="cat">${esc(n.category||"TRINETRA CHANNEL")}</span>
+    <h3>${esc(title)}</h3>
+    <p>${esc(body).replace(/\n/g,"<br>")}</p>
+    <span class="date">${esc(place)} • ${esc(date)}</span>
+    <a class="readmore" href="#latest">पूरी खबर पढ़ें →</a>
+   </div>
+  </article>`;
+ }).join("");
+}
+
+try{
+ const q=query(collection(db,"news"),orderBy("createdAt","desc"),limit(50));
+ onSnapshot(q,snapshot=>{
+  render(snapshot.docs.map(d=>({id:d.id,...d.data()})));
+ },error=>{
+  console.error(error);
+  grid.innerHTML='<p class="status">खबरें लोड नहीं हो सकीं। Firebase Rules जाँचें।</p>';
+ });
+}catch(error){
+ console.error(error);
+ grid.innerHTML='<p class="status">Firebase कनेक्शन में समस्या है।</p>';
+}
+</script>
+</body>
+</html>
