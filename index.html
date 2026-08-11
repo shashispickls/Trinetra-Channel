@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="hi">
 <head>
@@ -168,10 +169,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/fireba
 import {
   getFirestore,
   collection,
-  query,
-  orderBy,
-  limit,
-  onSnapshot
+  getDocs
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -294,27 +292,26 @@ function setupShareButtons(){
 
 function textSafe(v){ return String(v || "Trinetra Channel खबर"); }
 
-try{
-  const q = query(
-    collection(db,"news"),
-    orderBy("createdAt","desc"),
-    limit(50)
-  );
+async function loadNews(){
+  try{
+    const snapshot = await getDocs(collection(db,"news"));
+    const items = snapshot.docs.map(d => ({id:d.id,...d.data()}));
 
-  onSnapshot(q,
-    snapshot => {
-      const items = snapshot.docs.map(d => ({id:d.id,...d.data()}));
-      render(items);
-    },
-    error => {
-      console.error(error);
-      grid.innerHTML = '<p class="status">खबरें लोड नहीं हो सकीं। Firebase Rules जाँचें।</p>';
-    }
-  );
-}catch(error){
-  console.error(error);
-  grid.innerHTML = '<p class="status">Firebase कनेक्शन में समस्या है।</p>';
+    items.sort((a,b)=>{
+      const aTime = a.createdAt?.seconds ? a.createdAt.seconds : (a.createdAt ? new Date(a.createdAt).getTime()/1000 : 0);
+      const bTime = b.createdAt?.seconds ? b.createdAt.seconds : (b.createdAt ? new Date(b.createdAt).getTime()/1000 : 0);
+      return bTime - aTime;
+    });
+
+    render(items.slice(0,50));
+  }catch(error){
+    console.error("Firebase news error:", error);
+    grid.innerHTML = '<p class="status">खबरें लोड नहीं हो सकीं। Firebase Rules जाँचें।</p>';
+  }
 }
+
+loadNews();
 </script>
 </body>
 </html>
+
