@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#b91c1c">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Trinetra Channel">
+<meta property="og:title" content="Trinetra Channel — आपकी खबर, आपकी आवाज़">
+<meta property="og:description" content="देश, प्रदेश और स्थानीय स्तर की महत्वपूर्ण खबरें सबसे पहले और आसान भाषा में।">
+<meta property="og:url" content="https://trinetrachannel.github.io/Trinetra-Channel/">
+<meta property="og:image" content="https://trinetrachannel.github.io/Trinetra-Channel/thumbnail.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Trinetra Channel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trinetra Channel — आपकी खबर, आपकी आवाज़">
+<meta name="twitter:description" content="देश, प्रदेश और स्थानीय स्तर की महत्वपूर्ण खबरें।">
+<meta name="twitter:image" content="https://trinetrachannel.github.io/Trinetra-Channel/thumbnail.jpg">
+
+<title>Trinetra Channel | आपकी खबर, आपकी आवाज़</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;background:#f5f6f8;color:#172033}
+a{text-decoration:none;color:inherit}
+.top{background:#111827;color:#fff;padding:7px 14px;font-size:13px}
+.wrap{max-width:1100px;margin:auto}
+header{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #0001}
+.head{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:52px;height:52px;object-fit:contain;border-radius:10px}
+.name{font-weight:900;font-size:20px}
+.tag{color:#b91c1c;font-size:12px;font-weight:800}
+.nav{display:flex;gap:5px;overflow:auto;padding:0 14px 10px}
+.nav a{white-space:nowrap;padding:8px 11px;border-radius:8px;font-size:14px;font-weight:800}
+.nav a:hover{background:#b91c1c;color:#fff}
+.break{background:#dc2626;color:#fff;padding:8px 14px;font-weight:800}
+.hero{background:linear-gradient(135deg,#111827,#991b1b);color:#fff;padding:42px 14px}
+.hero h1{font-size:clamp(34px,9vw,58px);line-height:1.1;margin:0 0 12px}
+.hero p{color:#e5e7eb;font-size:17px}
+.btn{display:inline-block;padding:11px 16px;border-radius:9px;font-weight:900;margin:6px 6px 0 0}
+.primary{background:#f59e0b;color:#111827}
+.white{border:1px solid #ffffff55;background:#ffffff12}
+section{padding:34px 14px}
+.title{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #dc2626;margin-bottom:16px}
+.title h2{margin:0 0 7px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:13px;overflow:hidden}
+.pic{height:190px;background:linear-gradient(135deg,#1f2937,#991b1b);display:flex;align-items:center;justify-content:center;color:#fff;font-size:42px;background-size:cover;background-position:center}
+.content{padding:15px}
+.cat{color:#dc2626;font-size:12px;font-weight:900}
+.card h3{font-size:18px;line-height:1.45;margin:5px 0}
+.card p{color:#667085;font-size:14px;margin:0;line-height:1.7}.full-body{white-space:normal;word-break:break-word}
+.date{color:#98a2b3;font-size:12px;display:block;margin-top:9px}
+.readmore{display:inline-block;margin-top:10px;color:#b91c1c;font-weight:800}
+.share-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.share-btn{border:0;border-radius:8px;padding:9px 12px;font-weight:800;cursor:pointer;background:#e5e7eb;color:#172033}
+.share-btn.whatsapp{background:#dcfce7;color:#166534}
+.share-btn.copy{background:#fee2e2;color:#991b1b}
+.about{background:#fff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:#f8fafc;border-radius:12px;padding:18px;text-align:center}
+.stat b{display:block;font-size:25px;color:#b91c1c}
+.contact{background:#111827;color:#fff;border-radius:16px;padding:22px}
+.contact p{color:#d1d5db}
+footer{background:#0b1220;color:#cbd5e1;padding:25px 14px;text-align:center}
+.status{background:#fff7ed;border-left:4px solid #f97316;padding:12px;border-radius:8px;color:#7c2d12}
+@media(max-width:700px){
+.grid{grid-template-columns:1fr}
+.head{align-items:flex-start}
+.stats{grid-template-columns:1fr 1fr}
+.hero{padding:35px 14px}
+.pic{height:210px}
+}
+@media(max-width:420px){
+.stats{grid-template-columns:1fr}
+.name{font-size:17px}
+}
+
+/* ===== TRINETRA PREMIUM HERO ===== */
+.top{
+  background:#07090d;
+  border-bottom:1px solid #262626;
+}
+.top .wrap{display:flex;justify-content:space-between;align-items:center}
+#liveClock{color:#ffd54a}
+
+header{backdrop-filter:blur(10px)}
+.brand .logo{
+  animation:logoGlow 2.2s ease-in-out infinite;
+  box-shadow:0 0 0 rgba(255,180,0,0);
+}
+@keyframes logoSpin{to{transform:rotate(360deg)}}
+@keyframes logoGlow{
+  0%,100%{filter:drop-shadow(0 0 0 rgba(255,180,0,0))}
+  50%{filter:drop-shadow(0 0 14px rgba(255,180,0,.75))}
+}
+
+.break{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(90deg,#b40000,#ef1717,#b40000);
+  box-shadow:0 3px 18px rgba(220,0,0,.35);
+}
+.break:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  width:35%;
+  background:linear-gradient(90deg,transparent,#ffffff55,transparent);
+  transform:skewX(-20deg) translateX(-180%);
+  animation:tickerShine 3s infinite;
+}
+@keyframes tickerShine{to{transform:skewX(-20deg) translateX(420%)}}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  min-height:600px;
+  display:flex;
+  align-items:center;
+  background:
+    radial-gradient(circle at 78% 52%,rgba(255,77,0,.38),transparent 24%),
+    radial-gradient(circle at 83% 55%,rgba(255,180,0,.18),transparent 36%),
+    linear-gradient(115deg,#080a10 0%,#241018 42%,#79131a 100%);
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 80% 50%,transparent 0 15%,rgba(255,180,0,.28) 15.2%,transparent 15.7%),
+    radial-gradient(circle at 80% 50%,transparent 0 22%,rgba(255,100,0,.18) 22.2%,transparent 22.7%),
+    repeating-linear-gradient(125deg,transparent 0 24px,#ff35161c 25px 26px);
+  animation:heroRings 7s linear infinite;
+  pointer-events:none;
+}
+@keyframes heroRings{
+  0%{transform:rotate(0deg) scale(1)}
+  50%{transform:rotate(3deg) scale(1.04)}
+  100%{transform:rotate(0deg) scale(1)}
+}
+.hero .wrap{
+  position:relative;
+  z-index:2;
+}
+.hero h1{
+  max-width:620px;
+  text-shadow:0 4px 25px #000;
+  animation:heroText .9s ease both;
+}
+.hero p{
+  max-width:600px;
+  animation:heroText 1.1s ease both;
+}
+@keyframes heroText{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  right:7%;
+  top:50%;
+  width:390px;
+  height:390px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  border:3px solid #ffb000;
+  box-shadow:
+    0 0 25px #ffb000,
+    0 0 70px #ff4b00,
+    inset 0 0 45px #ff4b00;
+  animation:orbSpin 9s linear infinite;
+  opacity:.9;
+}
+@keyframes orbSpin{
+  from{transform:translateY(-50%) rotate(0deg)}
+  to{transform:translateY(-50%) rotate(360deg)}
+}
+
+.hero .brand-orb{
+  position:absolute;
+  right:calc(7% + 52px);
+  top:50%;
+  z-index:3;
+  width:286px;
+  height:286px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle,#222 0,#050505 58%,#000 100%);
+  border:7px solid #f02b2b;
+  box-shadow:0 0 22px #ff2525,0 0 65px #ff8a00,inset 0 0 30px #ff2525;
+  animation:brandFloat 2.8s ease-in-out infinite;
+}
+.hero .brand-orb img{
+  width:78%;
+  height:78%;
+  object-fit:contain;
+  border-radius:50%;
+}
+@keyframes brandFloat{
+  0%,100%{transform:translateY(-50%) scale(1)}
+  50%{transform:translateY(-53%) scale(1.035)}
+}
+
+.hero .hero-badge{
+  display:inline-block;
+  background:#b91c1c;
+  color:#fff;
+  padding:8px 15px;
+  border-radius:8px;
+  font-weight:900;
+  margin-bottom:14px;
+  animation:badgePulse 1.8s infinite;
+}
+@keyframes badgePulse{
+  0%,100%{box-shadow:0 0 0 rgba(255,50,50,0)}
+  50%{box-shadow:0 0 22px rgba(255,50,50,.55)}
+}
+
+.quick-points{
+  display:flex;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+.quick-points div{
+  padding-left:14px;
+  border-left:2px solid #ffb000;
+  font-weight:800;
+  color:#fff;
+}
+.quick-points small{display:block;color:#d1d5db;font-weight:500;margin-top:3px}
+
+#latest{
+  background:#f7f7f7;
+}
+#latest .title{
+  border-bottom:0;
+  position:relative;
+  padding-left:14px;
+}
+#latest .title:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:7px;
+  width:5px;
+  background:#dc2626;
+  border-radius:4px;
+}
+.card{
+  transition:transform .3s ease,box-shadow .3s ease;
+  box-shadow:0 5px 20px #0000000d;
+}
+.card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 18px 40px #00000020;
+}
+.cat{
+  display:inline-block;
+  background:#dc2626;
+  color:#fff;
+  padding:4px 8px;
+  border-radius:5px;
+}
+.share-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.share-btn{
+  border:0;background:#f3f4f6;padding:7px 10px;border-radius:7px;
+  font-weight:800;cursor:pointer;
+}
+.share-btn:hover{background:#dc2626;color:#fff}
+
+@media(max-width:800px){
+  .hero{min-height:620px}
+  .hero:after{right:4%;width:270px;height:270px;top:70%;opacity:.55}
+  .hero .brand-orb{right:calc(4% + 35px);top:70%;width:200px;height:200px}
+  .hero h1{font-size:42px}
+  .quick-points{margin-bottom:180px}
+}
+@media(max-width:600px){
+  .hero{min-height:700px}
+  .hero:after{top:76%;width:220px;height:220px}
+  .hero .brand-orb{top:76%;right:calc(50% - 100px);width:190px;height:190px}
+  .quick-points{margin-bottom:205px}
+  .top .wrap{font-size:11px}
+}
+
+
+/* ===== FINAL HERO / LIVE CLOCK FIX ===== */
+.top{
+  display:block!important;
+  min-height:34px;
+  line-height:20px;
+  background:#07090d!important;
+  color:#fff!important;
+  position:relative;
+  z-index:30;
+}
+.top .wrap{
+  max-width:1100px;
+  padding:0 14px;
+  overflow:hidden;
+}
+#liveDateTime{color:#ffd54a;white-space:nowrap}
+
+.hero .wrap{
+  max-width:1100px;
+  width:100%;
+  padding-right:46%;
+}
+.hero h1{max-width:610px}
+.hero p{max-width:560px}
+.hero .quick-points{max-width:620px}
+
+.hero .brand-orb{
+  right:4%;
+  width:280px;
+  height:280px;
+  z-index:4;
+}
+.hero:after{
+  right:2.5%;
+  width:390px;
+  height:390px;
+  z-index:1;
+}
+@media(max-width:900px){
+  .hero .wrap{padding-right:14px}
+  .hero .brand-orb{
+    width:235px;
+    height:235px;
+    right:4%;
+    top:72%;
+  }
+  .hero:after{
+    width:310px;
+    height:310px;
+    right:0;
+    top:72%;
+  }
+  .hero{min-height:720px}
+  .quick-points{margin-bottom:230px}
+}
+@media(max-width:600px){
+  .top .wrap{font-size:10px}
+  #liveDateTime{font-size:10px}
+  .hero{min-height:760px}
+  .hero .brand-orb{
+    width:190px;
+    height:190px;
+    right:calc(50% - 95px);
+    top:76%;
+  }
+  .hero:after{
+    width:250px;
+    height:250px;
+    right:calc(50% - 125px);
+    top:76%;
+  }
+}
+
+
+.shared-highlight{
+  animation:sharedNewsPulse 1s ease-in-out 0s 3;
+  outline:4px solid #f59e0b;
+  outline-offset:4px;
+}
+@keyframes sharedNewsPulse{
+  0%,100%{box-shadow:0 0 0 rgba(245,158,11,0)}
+  50%{box-shadow:0 0 35px rgba(245,158,11,.75)}
+}
+
+
+/* ===== TRINETRA RED-BLACK PREMIUM BRAND ===== */
+.name{
+  position:relative!important;
+  display:inline-block!important;
+  font-size:23px!important;
+  font-weight:1000!important;
+  letter-spacing:.6px;
+  line-height:1.05;
+  white-space:nowrap;
+}
+.brand-red,.brand-black{
+  display:inline-block;
+  position:relative;
+  will-change:transform,filter;
+}
+.brand-red{
+  color:#e10600!important;
+  text-shadow:0 2px 0 #7f1d1d,0 0 12px rgba(225,6,0,.22);
+  animation:trinetraPulse 2.8s ease-in-out infinite;
+}
+.brand-black{
+  color:#050505!important;
+  text-shadow:0 2px 0 #c7c7c7;
+  animation:channelFloat 2.8s ease-in-out .16s infinite;
+}
+.live-dot{
+  display:inline-block;
+  width:8px;height:8px;
+  margin-left:8px;
+  vertical-align:middle;
+  border-radius:50%;
+  background:#e10600;
+  box-shadow:0 0 0 0 rgba(225,6,0,.65),0 0 10px rgba(225,6,0,.8);
+  animation:livePulse 1.25s infinite;
+}
+.name:after{
+  content:"";
+  position:absolute;
+  left:0;right:8px;bottom:-7px;
+  height:2px;
+  border-radius:10px;
+  background:linear-gradient(90deg,#e10600 0%,#e10600 35%,#111 50%,#e10600 65%,#111 100%);
+  background-size:220% 100%;
+  animation:brandSweep 2.1s linear infinite;
+}
+@keyframes trinetraPulse{
+  0%,100%{transform:translateY(0) scale(1);filter:brightness(1)}
+  18%{transform:translateY(-1px) scale(1.035);filter:brightness(1.2)}
+  36%{transform:translateY(0) scale(1)}
+  72%{transform:translateY(1px) scale(1.015);filter:brightness(1.08)}
+}
+@keyframes channelFloat{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(3px)}
+  50%{transform:translateX(0)}
+  75%{transform:translateX(-2px)}
+}
+@keyframes livePulse{
+  0%{transform:scale(.65);box-shadow:0 0 0 0 rgba(225,6,0,.65),0 0 7px rgba(225,6,0,.7)}
+  55%{transform:scale(1);box-shadow:0 0 0 7px rgba(225,6,0,0),0 0 15px rgba(225,6,0,1)}
+  100%{transform:scale(.65);box-shadow:0 0 0 0 rgba(225,6,0,0),0 0 7px rgba(225,6,0,.7)}
+}
+@keyframes brandSweep{
+  0%{background-position:220% 0}
+  100%{background-position:-30% 0}
+}
+@media(max-width:600px){
+  .name{font-size:18px!important}
+  .live-dot{width:6px;height:6px;margin-left:5px}
+}
+
+/* Premium news cards */
+.card{
+  position:relative;
+  box-shadow:0 8px 26px rgba(15,23,42,.10);
+}
+.card:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:linear-gradient(#e10600,#111);
+  z-index:2;
+}
+.card .pic{
+  transition:transform .45s ease,filter .45s ease;
+}
+.card:hover .pic{
+  transform:scale(1.035);
+  filter:saturate(1.08) contrast(1.03);
+}
+
+/* Cleaner breaking-news strip */
+.break{
+  letter-spacing:.2px;
+}
+
+
+/* ===== HEADER OVERLAP FIX ===== */
+.brand{
+  align-items:center!important;
+}
+.brand > div{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:4px;
+}
+.name{
+  position:relative!important;
+  display:block!important;
+  height:30px;
+  line-height:26px!important;
+  margin:0!important;
+  padding:0 0 2px!important;
+  overflow:visible!important;
+}
+.tag{
+  position:relative!important;
+  display:block!important;
+  margin:0!important;
+  line-height:16px!important;
+  height:16px;
+  white-space:nowrap;
+  z-index:5;
+}
+.name:after{
+  bottom:-2px!important;
+}
+@media(max-width:600px){
+  .name{
+    height:25px;
+    line-height:22px!important;
+  }
+  .tag{
+    line-height:14px!important;
+    height:14px;
+    font-size:11px!important;
+  }
+}
+
+
+/* ===== TEMPORARY 15 AUGUST SPECIAL ===== */
+.independence-section{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fff 33%,#f7f7f7 33%,#f7f7f7 66%,#fff 66%)}
+.independence-section:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#ff7a00 0 33%,#fff 33% 66%,#138808 66%)}
+.independence-head{text-align:center;margin-bottom:22px}
+.independence-head h2{font-size:clamp(28px,6vw,42px);margin:0;color:#111827;font-weight:1000}
+.independence-head p{margin:7px 0 0;color:#667085;font-weight:700}
+.tricolor-line{width:180px;height:4px;margin:12px auto 0;border-radius:20px;background:linear-gradient(90deg,#ff7a00 0 33%,#fff 33% 66%,#138808 66%)}
+.music-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.music-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px rgba(15,23,42,.09);transition:transform .3s ease,box-shadow .3s ease}
+.music-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,23,42,.16)}
+.music-title{padding:13px 15px 8px;font-weight:1000;color:#111827}
+.music-number{display:inline-block;background:#dc2626;color:#fff;border-radius:6px;padding:3px 7px;margin-right:5px;font-size:12px}
+.music-frame{width:100%;aspect-ratio:16/9;border:0;display:block}
+.music-note{text-align:center;margin:20px auto 0;max-width:720px;color:#667085;font-size:13px}
+@media(max-width:800px){.music-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.music-grid{grid-template-columns:1fr}}
+
+
+/* ===== 15 AUGUST WISHES BANNER ===== */
+.independence-wish{
+  position:relative;
+  overflow:hidden;
+  padding:16px 14px;
+  text-align:center;
+  color:#111827;
+  background:linear-gradient(90deg,#fff7ed 0%,#fff 48%,#f0fdf4 100%);
+  border-top:3px solid #ff7a00;
+  border-bottom:3px solid #138808;
+}
+.independence-wish:after{
+  content:"";
+  position:absolute;
+  left:-20%;
+  top:0;
+  width:35%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,#ffffff99,transparent);
+  transform:skewX(-20deg);
+  animation:wishShine 3.5s linear infinite;
+}
+.wish-inner{position:relative;z-index:2}
+.wish-flag{
+  font-size:32px;
+  display:inline-block;
+  margin-right:8px;
+  animation:flagWave 1.8s ease-in-out infinite;
+}
+.wish-title{
+  display:inline-block;
+  font-size:clamp(20px,4vw,30px);
+  font-weight:1000;
+  color:#b91c1c;
+  vertical-align:middle;
+}
+.wish-sub{
+  margin:5px 0 0;
+  font-weight:800;
+  color:#344054;
+}
+@keyframes wishShine{
+  0%{left:-35%}
+  100%{left:125%}
+}
+@keyframes flagWave{
+  0%,100%{transform:rotate(-2deg) translateY(0)}
+  50%{transform:rotate(4deg) translateY(-2px)}
+}
+
+
+/* ===== PREMIUM REALISTIC 15 AUGUST NEWS HERO ===== */
+.independence-hero{
+  position:relative;
+  overflow:hidden;
+  min-height:390px;
+  display:flex;
+  align-items:center;
+  background:
+    radial-gradient(circle at 68% 18%,rgba(255,255,255,.88),transparent 22%),
+    linear-gradient(180deg,#8ec7ef 0%,#d9edfa 52%,#f5c16b 100%);
+  border-top:4px solid #ff7a00;
+  border-bottom:4px solid #138808;
+}
+.independence-hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 50% 88%,rgba(255,190,70,.5),transparent 35%),
+    linear-gradient(180deg,transparent 55%,rgba(95,60,25,.18));
+  pointer-events:none;
+}
+.independence-hero:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;height:38px;
+  background:linear-gradient(180deg,transparent,rgba(32,55,35,.38));
+  pointer-events:none;
+}
+.independence-hero-inner{
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:28px 20px 48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:38px;
+}
+.waving-flag{
+  position:relative;
+  width:360px;
+  height:245px;
+  flex:0 0 auto;
+  filter:drop-shadow(0 18px 18px rgba(0,0,0,.28));
+  animation:flagFloat 3.2s ease-in-out infinite;
+}
+.flag-pole{
+  position:absolute;
+  left:5px;
+  top:-12px;
+  width:7px;
+  height:292px;
+  border-radius:6px;
+  background:linear-gradient(90deg,#555,#f4f4f4 45%,#777);
+  box-shadow:2px 0 4px rgba(0,0,0,.3);
+}
+.flag-tassel{
+  position:absolute;
+  left:-2px;
+  top:-19px;
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff1a8,#b9871b 58%,#6b4c08);
+  z-index:3;
+}
+.flag-cloth{
+  position:absolute;
+  left:12px;
+  top:6px;
+  width:340px;
+  height:205px;
+  overflow:hidden;
+  transform-origin:left center;
+  border-radius:2px 10px 10px 2px;
+  background:
+    linear-gradient(180deg,#ff8a00 0 33.33%,#fff 33.33% 66.66%,#138808 66.66%),
+    linear-gradient(90deg,rgba(255,255,255,.12),rgba(0,0,0,.1));
+  box-shadow:
+    inset -28px 0 28px rgba(0,0,0,.18),
+    inset 12px 0 12px rgba(255,255,255,.12),
+    0 10px 14px rgba(0,0,0,.18);
+  animation:flagWave 2.15s ease-in-out infinite;
+}
+.flag-cloth:before{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  background:
+    repeating-linear-gradient(
+      92deg,
+      rgba(255,255,255,0) 0 20px,
+      rgba(255,255,255,.23) 25px,
+      rgba(0,0,0,.18) 36px,
+      rgba(255,255,255,0) 48px
+    );
+  mix-blend-mode:soft-light;
+  opacity:.95;
+  animation:flagFolds 2.15s ease-in-out infinite;
+}
+.flag-cloth:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:62px;
+  height:62px;
+  transform:translate(-50%,-50%);
+  border:4px solid #183b8f;
+  border-radius:50%;
+  background:repeating-conic-gradient(#183b8f 0 5deg,transparent 5deg 15deg);
+  box-shadow:inset 0 0 0 7px #fff;
+}
+.wish-copy{
+  text-align:center;
+  min-width:430px;
+  text-shadow:0 2px 4px rgba(255,255,255,.35);
+}
+.wish-15{
+  margin:0;
+  font-size:clamp(62px,8vw,96px);
+  line-height:.92;
+  font-weight:1000;
+  color:#e85d00;
+  letter-spacing:-2px;
+}
+.wish-freedom{
+  margin:8px 0 0;
+  font-size:clamp(30px,4vw,48px);
+  font-weight:1000;
+  color:#1c4a91;
+}
+.wish-message{
+  margin:2px 0 0;
+  font-size:clamp(30px,4vw,48px);
+  font-weight:1000;
+  color:#c51f1f;
+}
+.wish-divider{
+  width:360px;
+  max-width:90%;
+  height:5px;
+  margin:14px auto 0;
+  background:linear-gradient(90deg,#ff7a00 0 33%,#183b8f 33% 66%,#138808 66%);
+}
+.wish-motto{
+  margin:14px 0 0;
+  font-size:18px;
+  font-weight:900;
+  color:#315c2b;
+}
+.patriotic-particle{position:absolute;font-size:20px;opacity:.7;animation:particleFloat 7s linear infinite;z-index:2}
+.p1{left:6%;top:18%}.p2{left:29%;top:78%;animation-delay:1.5s}.p3{right:10%;top:23%;animation-delay:3s}.p4{right:28%;bottom:15%;animation-delay:4.5s}
+@keyframes flagWave{
+  0%,100%{transform:perspective(900px) rotateY(0deg) skewY(0deg) translateY(0)}
+  20%{transform:perspective(900px) rotateY(-12deg) skewY(1.2deg) translateY(-2px)}
+  45%{transform:perspective(900px) rotateY(10deg) skewY(-1.5deg) translateY(2px)}
+  70%{transform:perspective(900px) rotateY(-8deg) skewY(1deg) translateY(-1px)}
+}
+@keyframes flagFolds{
+  0%,100%{transform:translateX(-10px) scaleX(1)}
+  50%{transform:translateX(12px) scaleX(1.08)}
+}
+@keyframes flagFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+@keyframes particleFloat{
+  0%{transform:translateY(25px) rotate(0);opacity:0}
+  18%{opacity:.7}
+  80%{opacity:.7}
+  100%{transform:translateY(-70px) rotate(180deg);opacity:0}
+}
+@media(max-width:900px){
+  .independence-hero{min-height:500px}
+  .independence-hero-inner{flex-direction:column;gap:10px;padding:28px 12px 48px}
+  .waving-flag{transform:scale(.82);margin-bottom:-18px}
+  .wish-copy{min-width:0;width:100%}
+}
+@media(max-width:600px){
+  .independence-hero{min-height:510px}
+  .waving-flag{transform:scale(.68);margin-bottom:-45px}
+  .wish-15{font-size:58px}
+  .wish-freedom{font-size:28px}
+  .wish-message{font-size:28px}
+  .wish-motto{font-size:14px}
+}
+
+</style>
+</head>
+
+<body>
+<div class="top">
+<div class="wrap">
+  <span>🔴 LIVE • Trinetra Channel • आपकी खबर, आपकी आवाज़</span>
+  <span id="liveDateTime" style="float:right;font-weight:900"></span>
+</div>
+</div>
+
+<header>
+<div class="head wrap">
+<a class="brand" href="#">
+<img class="logo" src="logo.png" alt="Trinetra Channel Logo">
+<div>
+<div class="name"><span class="brand-red">TRINETRA</span> <span class="brand-black">CHANNEL</span><span class="live-dot"></span></div>
+<div class="tag">आपकी खबर, आपकी आवाज़</div>
+</div>
+</a>
+
+<a class="btn primary" href="Trinetra_Firebase_Admin.html">🔐 Admin</a>
+</div>
+
+<nav class="nav wrap">
+<a href="#latest">ताज़ा खबर</a>
+<a href="#national">देश</a>
+<a href="#state">प्रदेश</a>
+<a href="#local">स्थानीय</a>
+<a href="#youtube">YouTube</a>
+<a href="#independence">🇮🇳 15 अगस्त</a>
+<a href="#about">हमारे बारे में</a>
+</nav>
+</header>
+
+<div class="break"><span style="font-weight:1000">🔴 BREAKING NEWS</span> &nbsp;•&nbsp; Trinetra Channel पर पढ़िए महत्वपूर्ण खबरें सबसे पहले</div>
+
+<section class="independence-hero" id="independence">
+  <span class="patriotic-particle p1">🟧</span>
+  <span class="patriotic-particle p2">⬜</span>
+  <span class="patriotic-particle p3">🟩</span>
+  <span class="patriotic-particle p4">🇮🇳</span>
+  <div class="independence-hero-inner">
+    <div class="waving-flag" aria-label="लहराता हुआ भारतीय तिरंगा">
+      <span class="flag-pole"></span>
+      <span class="flag-tassel"></span>
+      <span class="flag-cloth"></span>
+    </div>
+    <div class="wish-copy">
+      <h2 class="wish-15">15 अगस्त</h2>
+      <div class="wish-freedom">स्वतंत्रता दिवस</div>
+      <div class="wish-message">की हार्दिक शुभकामनाएँ</div>
+      <div class="wish-divider"></div>
+      <p class="wish-motto">जय हिंद &nbsp; • &nbsp; वंदे मातरम् &nbsp; • &nbsp; भारत माता की जय</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="hero">
+<div class="wrap">
+<div class="hero-badge">⚡ सबसे पहले • सबसे तेज़ • सबसे सटीक</div>
+<h1>खबर वही,<br>जिस पर <span style="color:#ffb000">भरोसा</span> हो।</h1>
+<p>देश, प्रदेश और स्थानीय स्तर की महत्वपूर्ण खबरें सबसे पहले और आसान भाषा में।</p>
+<a class="btn primary" href="#latest">📰 ताज़ा खबरें देखें</a>
+<a class="btn white" href="https://www.youtube.com/@trinetrachannel2574" target="_blank" rel="noopener">▶ YouTube चैनल</a>
+
+<div class="quick-points">
+  <div>⚡ सबसे तेज़<small>हर खबर सबसे पहले</small></div>
+  <div>🎯 सबसे सटीक<small>100% विश्वसनीय खबरें</small></div>
+  <div>📢 आपकी आवाज़<small>आपके लिए, आपके साथ</small></div>
+</div>
+</div>
+
+<div class="brand-orb">
+  <img src="logo.png" alt="Trinetra Channel Logo">
+</div>
+</section>
+
+<section id="latest">
+<div class="wrap">
+<div class="title"><h2>ताज़ा खबरें</h2></div>
+<div class="grid" id="newsGrid">
+<p class="status">खबरें लोड हो रही हैं...</p>
+</div>
+</div>
+</section>
+
+<section id="national">
+<div class="wrap">
+<div class="title"><h2>देश</h2></div>
+<p>देश से जुड़ी महत्वपूर्ण खबरें जल्द यहां दिखाई जाएंगी।</p>
+</div>
+</section>
+
+<section id="state">
+<div class="wrap">
+<div class="title"><h2>प्रदेश</h2></div>
+<p>प्रदेश की ताज़ा खबरें यहां दिखाई जाएंगी।</p>
+</div>
+</section>
+
+<section id="local">
+<div class="wrap">
+<div class="title"><h2>स्थानीय</h2></div>
+<p>स्थानीय खबरें यहां दिखाई जाएंगी।</p>
+</div>
+</section>
+
+
+<section id="independence" class="independence-section">
+<div class="wrap">
+<div class="independence-head">
+<h2>🇮🇳 स्वतंत्रता दिवस विशेष 🇮🇳</h2>
+<p>देशभक्ति गीत • 15 अगस्त • जय हिंद</p>
+<div class="tricolor-line"></div>
+</div>
+<div class="music-grid"><article class="music-card">
+<div class="music-title"><span class="music-number">01</span>देशभक्ति गीत 01</div>
+<iframe class="music-frame" src="https://www.youtube.com/embed/rja5OuQGpAg" title="देशभक्ति गीत 01 - Trinetra Channel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</article><article class="music-card">
+<div class="music-title"><span class="music-number">02</span>देशभक्ति गीत 02</div>
+<iframe class="music-frame" src="https://www.youtube.com/embed/46kMhdOoeHM" title="देशभक्ति गीत 02 - Trinetra Channel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</article><article class="music-card">
+<div class="music-title"><span class="music-number">03</span>देशभक्ति गीत 03</div>
+<iframe class="music-frame" src="https://www.youtube.com/embed/Tqdr3B93r9s" title="देशभक्ति गीत 03 - Trinetra Channel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</article><article class="music-card">
+<div class="music-title"><span class="music-number">04</span>देशभक्ति गीत 04</div>
+<iframe class="music-frame" src="https://www.youtube.com/embed/yOHnlNuZhgI" title="देशभक्ति गीत 04 - Trinetra Channel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</article><article class="music-card">
+<div class="music-title"><span class="music-number">05</span>देशभक्ति गीत 05</div>
+<iframe class="music-frame" src="https://www.youtube.com/embed/gFwR0wDpPGY" title="देशभक्ति गीत 05 - Trinetra Channel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</article><article class="music-card">
+<div class="music-title"><span class="music-number">06</span>देशभक्ति गीत 06</div>
+<iframe class="music-frame" src="https://www.youtube.com/embed/YczkDMTaek4" title="देशभक्ति गीत 06 - Trinetra Channel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</article></div>
+<p class="music-note">🎵 ये वीडियो YouTube के माध्यम से चलाए जा रहे हैं।</p>
+</div>
+</section>
+
+<section id="youtube">
+<div class="wrap">
+<div class="title"><h2>YouTube चैनल</h2></div>
+<div class="stats">
+<div class="stat"><b>2.72K+</b>Subscribers</div>
+<div class="stat"><b>338</b>Videos</div>
+<div class="stat"><b>292K+</b>Views</div>
+</div>
+<p><a class="btn primary" href="https://www.youtube.com/@trinetrachannel2574" target="_blank" rel="noopener">YouTube पर जाएँ →</a></p>
+</div>
+</section>
+
+<section id="about" class="about">
+<div class="wrap">
+<div class="title"><h2>हमारे बारे में</h2></div>
+<p>Trinetra Channel का उद्देश्य देश, प्रदेश और स्थानीय स्तर की महत्वपूर्ण खबरों को सरल, स्पष्ट और जिम्मेदार तरीके से पाठकों तक पहुंचाना है।</p>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="contact">
+<h2>Trinetra Channel से जुड़ें</h2>
+<p>खबर, सुझाव या विज्ञापन से संबंधित जानकारी के लिए संपर्क करें।</p>
+<a class="btn primary" href="mailto:cmspratapgarh@gmail.com">ई-मेल करें</a>
+</div>
+</div>
+</section>
+
+<footer>© <span id="year"></span> Trinetra Channel • सर्वाधिकार सुरक्षित।</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBUNUxgHf1pyNM9sjeOgYQaAwoAYff0J1Q",
+  authDomain: "trinetra-channel.firebaseapp.com",
+  projectId: "trinetra-channel",
+  storageBucket: "trinetra-channel.firebasestorage.app",
+  messagingSenderId: "262471448634",
+  appId: "1:262471448634:web:dde9e14c8b6a4ab761dd03",
+  measurementId: "G-YP35VXVMS6"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const grid = document.getElementById("newsGrid");
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function updateLiveDateTime(){
+  const now=new Date();
+  const days=["रविवार","सोमवार","मंगलवार","बुधवार","गुरुवार","शुक्रवार","शनिवार"];
+  const date=now.toLocaleDateString("hi-IN",{day:"2-digit",month:"long",year:"numeric"});
+  const time=now.toLocaleTimeString("hi-IN",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true});
+  const el=document.getElementById("liveDateTime");
+  if(el) el.textContent=`${days[now.getDay()]} • ${date} | ${time}`;
+}
+updateLiveDateTime();
+setInterval(updateLiveDateTime,1000);
+
+function esc(v){
+  return String(v ?? "").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[c]));
+}
+
+function render(items){
+  if(!items.length){
+    grid.innerHTML = '<p class="status">अभी कोई खबर प्रकाशित नहीं है।</p>';
+    return;
+  }
+
+  grid.innerHTML = items.map(n => {
+    const photo = n.photo || "";
+    const title = n.title || "बिना शीर्षक";
+    const place = n.place || "Trinetra Channel";
+    const date = n.date || "";
+
+    return `
+      <article class="card" data-news-card-id="${esc(n.id)}">
+        <div class="pic" ${photo ? `style="background-image:url('${photo.replaceAll("'","%27")}')"` : ""}>
+          ${photo ? "" : "📰"}
+        </div>
+        <div class="content">
+          <span class="cat">TRINETRA CHANNEL</span>
+          <h3>${esc(title)}</h3>
+          <p class="full-body">${esc(n.body || "").replace(/\n/g,"<br>")}</p>
+          <span class="date">${esc(place)} • ${esc(date)}</span>
+          <div class="share-row">
+            <button class="share-btn" data-share-id="${esc(n.id)}">📤 शेयर करें</button>
+            <button class="share-btn whatsapp" data-wa-id="${esc(n.id)}">🟢 WhatsApp</button>
+            <button class="share-btn copy" data-copy-id="${esc(n.id)}">🔗 Link Copy</button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+  setupShareButtons();
+}
+
+
+function newsShareUrl(id){
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.hash = "news-" + id;
+  return url.toString();
+}
+
+function newsShareText(title){
+  return title + " — Trinetra Channel";
+}
+
+function setupShareButtons(){
+  document.querySelectorAll("[data-share-id]").forEach(btn=>{
+    btn.onclick = async ()=>{
+      const id = btn.dataset.shareId;
+      const card = btn.closest(".card");
+      const title = card ? (card.querySelector("h3")?.textContent || "Trinetra Channel खबर") : "Trinetra Channel खबर";
+      const url = newsShareUrl(id);
+
+      if(navigator.share){
+        try{
+          await navigator.share({title:textSafe(title), text:newsShareText(title), url});
+        }catch(e){}
+      }else{
+        try{
+          await navigator.clipboard.writeText(url);
+          btn.textContent = "✅ Link Copy हो गया";
+          setTimeout(()=>btn.textContent="📤 शेयर करें",1800);
+        }catch(e){
+          prompt("यह लिंक कॉपी करें:",url);
+        }
+      }
+    };
+  });
+
+  document.querySelectorAll("[data-wa-id]").forEach(btn=>{
+    btn.onclick = ()=>{
+      const id = btn.dataset.waId;
+      const card = btn.closest(".card");
+      const title = card ? (card.querySelector("h3")?.textContent || "Trinetra Channel खबर") : "Trinetra Channel खबर";
+      const url = newsShareUrl(id);
+      const text = encodeURIComponent(newsShareText(title) + "\\n" + url);
+      window.open("https://wa.me/?text=" + text, "_blank");
+    };
+  });
+
+  document.querySelectorAll("[data-copy-id]").forEach(btn=>{
+    btn.onclick = async ()=>{
+      const url = newsShareUrl(btn.dataset.copyId);
+      try{
+        await navigator.clipboard.writeText(url);
+        btn.textContent = "✅ Link Copy हो गया";
+        setTimeout(()=>btn.textContent="🔗 Link Copy",1800);
+      }catch(e){
+        prompt("यह लिंक कॉपी करें:",url);
+      }
+    };
+  });
+}
+
+
+function openSharedNews(){
+  const hash=decodeURIComponent(window.location.hash || "");
+  if(!hash.startsWith("#news-")) return;
+
+  const id=hash.slice(6);
+  if(!id) return;
+
+  const card=document.querySelector(`[data-news-card-id="${CSS.escape(id)}"]`);
+  if(card){
+    card.scrollIntoView({behavior:"smooth",block:"center"});
+    card.classList.add("shared-highlight");
+    setTimeout(()=>card.classList.remove("shared-highlight"),5000);
+    return;
+  }
+
+  // News may still be loading; try again shortly.
+  setTimeout(openSharedNews,500);
+}
+
+window.addEventListener("hashchange",openSharedNews);
+
+function textSafe(v){ return String(v || "Trinetra Channel खबर"); }
+
+async function loadNews(){
+  try{
+    const snapshot = await getDocs(collection(db,"news"));
+    const items = snapshot.docs.map(d => ({id:d.id,...d.data()}));
+
+    items.sort((a,b)=>{
+      const aTime = a.createdAt?.seconds ? a.createdAt.seconds : (a.createdAt ? new Date(a.createdAt).getTime()/1000 : 0);
+      const bTime = b.createdAt?.seconds ? b.createdAt.seconds : (b.createdAt ? new Date(b.createdAt).getTime()/1000 : 0);
+      return bTime - aTime;
+    });
+
+    render(items.slice(0,50));
+    setTimeout(openSharedNews,100);
+  }catch(error){
+    console.error("Firebase news error:", error);
+    grid.innerHTML = '<p class="status">खबरें लोड नहीं हो सकीं। Firebase Rules जाँचें।</p>';
+  }
+}
+
+loadNews();
+</script>
+</body>
+</html>
