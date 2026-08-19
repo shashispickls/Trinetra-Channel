@@ -1593,7 +1593,7 @@ let currentNewsForShare = null;
 function shareCurrentNews(){
   if(!currentNewsForShare) return;
   const n=currentNewsForShare;
-  const url=new URL(window.location.href);
+  const url=new URL("https://wispy-waterfall-2c6c.cmspratapgarh.workers.dev/share/"+encodeURIComponent(n.id));
   if(n.id) url.hash="news-"+encodeURIComponent(n.id);
   const data={title:n.title||"Trinetra Channel",text:(n.title||"Trinetra Channel")+"\n\nTrinetra Channel",url:url.toString()};
   if(navigator.share){ navigator.share(data).catch(()=>{}); }
