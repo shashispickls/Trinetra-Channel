@@ -933,21 +933,10 @@ linear-gradient(135deg,#9ca3af,#1f2937);}
 .article-photo-gallery img{width:100%;height:auto;max-height:none;object-fit:contain;display:block;border-radius:10px;background:#f8fafc;}
 @media(min-width:700px){.article-photo-gallery{grid-template-columns:repeat(3,1fr);}}
 
-.news-thumb img,.side-thumb img{
-  width:100% !important;
-  height:100% !important;
-  object-fit:cover !important;
-  object-position:center center !important;
-  display:block !important;
-}
-.news-thumb,.side-thumb{
-  overflow:hidden;
-  position:relative;
-}
-.news-thumb img{
-  position:absolute;
-  inset:0;
-}
+.news-thumb img,.side-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+.news-thumb{overflow:hidden;position:relative;}
+.news-thumb img{position:absolute;inset:0;width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;}
 </style>
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8892976990257509"
@@ -1658,7 +1647,9 @@ function openArticle(title, category, text, photo, date, newsItem){
   if(meta) meta.textContent="Trinetra Channel | "+(date||"ताजा खबर");
 
   const item=newsItem||{};
-  const photos=(getPhotos(item).length ? getPhotos(item) : (photo ? [photo] : [])).slice(0,3);
+  const photos=Array.isArray(item.photos) && item.photos.length
+    ? item.photos.slice(0,3)
+    : (photo ? [photo] : []);
 
   const image=document.querySelector(".article-image");
   const gallery=document.getElementById("articlePhotoGallery");
@@ -1842,8 +1833,6 @@ function setNewsImage(img, src){
   const clean=String(src).trim();
   if(!clean) return;
 
-  img.style.visibility="hidden";
-
   try{
     if(clean.startsWith("data:image/")){
       const comma=clean.indexOf(",");
@@ -1860,51 +1849,36 @@ function setNewsImage(img, src){
         const url=URL.createObjectURL(blob);
 
         img.onload=function(){
-          img.style.visibility="visible";
           setTimeout(()=>URL.revokeObjectURL(url),2000);
-        };
-        img.onerror=function(){
-          URL.revokeObjectURL(url);
-          img.style.visibility="hidden";
         };
         img.src=url;
         return;
       }
     }
 
-    img.onload=function(){ img.style.visibility="visible"; };
-    img.onerror=function(){ img.style.visibility="hidden"; };
     img.src=clean;
   }catch(err){
     console.error("Thumbnail image error:",err);
-    img.style.visibility="hidden";
+    // Fallback: let the browser try the original URL/data URL.
+    img.src=clean;
   }
-}
-
-function photoUrl(v){
-  if(!v) return "";
-  if(typeof v === "string") return v.trim();
-  if(typeof v === "object"){
-    const u=v.url||v.src||v.downloadURL||v.downloadUrl||v.imageUrl||v.imageURL||v.photoUrl||v.photoURL;
-    return u ? String(u).trim() : "";
-  }
-  return "";
-}
-
-function getPhotos(n){
-  if(!n) return [];
-  const raw = [];
-  if(Array.isArray(n.photos)) raw.push(...n.photos);
-  else if(n.photos) raw.push(n.photos);
-  if(Array.isArray(n.images)) raw.push(...n.images);
-  else if(n.images) raw.push(n.images);
-  raw.push(n.photo,n.image,n.imageUrl,n.imageURL,n.photoUrl,n.photoURL);
-
-  return raw.map(photoUrl).filter(Boolean).map(s=>s.replace(/\s+/g,""));
 }
 
 function getPhoto(n){
-  return getPhotos(n)[0] || "";
+  if(!n) return "";
+  const vals=[
+    n.photo,n.image,n.imageUrl,n.imageURL,n.photoUrl,n.photoURL,
+    Array.isArray(n.photos)?n.photos[0]:n.photos,
+    Array.isArray(n.images)?n.images[0]:n.images
+  ];
+  for(const v of vals){
+    if(typeof v==="string" && v.trim()) return v.trim().replace(/\s+/g,"");
+    if(v && typeof v==="object"){
+      const u=v.url||v.src||v.downloadURL||v.downloadUrl||v.imageUrl||v.imageURL||v.photoUrl||v.photoURL;
+      if(u) return String(u).trim().replace(/\s+/g,"");
+    }
+  }
+  return "";
 }
 
 function categoryLabel(n){
@@ -2225,10 +2199,10 @@ async function openSharedPageDirect(){
     document.getElementById("shareBody").textContent=n.body||"";
 
     const gallery=document.getElementById("shareGallery");
-    const photos=getPhotos(n).slice(0,3);
-    photos.forEach(src=>{
+    const photos=Array.isArray(n.photos)&&n.photos.length?n.photos:(n.photo?[n.photo]:[]);
+    photos.slice(0,3).forEach(src=>{
       const img=document.createElement("img");
-      setNewsImage(img,src);
+      img.src=src;
       img.alt=n.title||"खबर";
       img.onerror=()=>img.remove();
       gallery.appendChild(img);
