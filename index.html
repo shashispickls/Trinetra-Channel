@@ -1616,22 +1616,46 @@ let currentNewsForShare = null;
 
 function shareCurrentNews(){
   if(!currentNewsForShare) return;
-  const n=currentNewsForShare;
-  const url=new URL("https://trinetrachannel.in/");
-  if(n.id) url.searchParams.set("news", n.id);
-  const data={title:n.title||"Trinetra Channel",text:(n.title||"Trinetra Channel")+"\n\nTrinetra Channel",url:url.toString()};
-  if(navigator.share){ navigator.share(data).catch(()=>{}); }
-  else if(navigator.clipboard){ navigator.clipboard.writeText(url.toString()).then(()=>alert("खबर का लिंक कॉपी हो गया। अब WhatsApp/Facebook पर शेयर कर सकते हैं।")); }
-  else { prompt("खबर का लिंक कॉपी करें:",url.toString()); }
-}
 
+  const n=currentNewsForShare;
+  const id=n.id;
+
+  if(!id) return;
+
+  const url =
+    "https://trinetrachannel.in/share/" +
+    encodeURIComponent(id);
+
+  const data={
+    title:n.title || "Trinetra Channel",
+    text:n.title || "Trinetra Channel",
+    url:url
+  };
+
+  if(navigator.share){
+    navigator.share(data).catch(()=>{});
+  }else if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(()=>{
+      alert("खबर का लिंक कॉपी हो गया। अब WhatsApp/Facebook पर शेयर कर सकते हैं।");
+    });
+  }else{
+    prompt("खबर का लिंक कॉपी करें:",url);
+  }
+}
 
 function copyCurrentNewsLink(){
   const id=currentNewsForShare && currentNewsForShare.id;
+
   if(!id) return;
-  const url="https://trinetrachannel.in/?news="+encodeURIComponent(id);
+
+  const url =
+    "https://trinetrachannel.in/share/" +
+    encodeURIComponent(id);
+
   if(navigator.clipboard){
-    navigator.clipboard.writeText(url).then(()=>alert("खबर का लिंक कॉपी हो गया।"));
+    navigator.clipboard.writeText(url).then(()=>{
+      alert("खबर का लिंक कॉपी हो गया।");
+    });
   }else{
     prompt("खबर का लिंक कॉपी करें:",url);
   }
