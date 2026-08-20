@@ -1658,9 +1658,7 @@ function openArticle(title, category, text, photo, date, newsItem){
   if(meta) meta.textContent="Trinetra Channel | "+(date||"ताजा खबर");
 
   const item=newsItem||{};
-  const photos=Array.isArray(item.photos) && item.photos.length
-    ? item.photos.slice(0,3)
-    : (photo ? [photo] : []);
+  const photos=(getPhotos(item).length ? getPhotos(item) : (photo ? [photo] : [])).slice(0,3);
 
   const image=document.querySelector(".article-image");
   const gallery=document.getElementById("articlePhotoGallery");
@@ -1840,32 +1838,73 @@ function text(v){
 
 function setNewsImage(img, src){
   if(!img || !src) return;
+
   const clean=String(src).trim();
   if(!clean) return;
 
-  // Thumbnail: use the Firebase-saved image directly.
-  // This avoids temporary blob URLs that can make thumbnails disappear.
-  img.onload=function(){ img.style.visibility="visible"; };
-  img.onerror=function(){ img.style.visibility="hidden"; };
-  img.style.visibility="visible";
-  img.src=clean;
+  img.style.visibility="hidden";
+
+  try{
+    if(clean.startsWith("data:image/")){
+      const comma=clean.indexOf(",");
+      if(comma > 0){
+        const meta=clean.slice(0,comma);
+        const base64=clean.slice(comma+1).replace(/\s+/g,"");
+        const mime=(meta.match(/^data:([^;]+);base64/i)||[])[1] || "image/jpeg";
+
+        const binary=atob(base64);
+        const bytes=new Uint8Array(binary.length);
+        for(let i=0;i<binary.length;i++) bytes[i]=binary.charCodeAt(i);
+
+        const blob=new Blob([bytes],{type:mime});
+        const url=URL.createObjectURL(blob);
+
+        img.onload=function(){
+          img.style.visibility="visible";
+          setTimeout(()=>URL.revokeObjectURL(url),2000);
+        };
+        img.onerror=function(){
+          URL.revokeObjectURL(url);
+          img.style.visibility="hidden";
+        };
+        img.src=url;
+        return;
+      }
+    }
+
+    img.onload=function(){ img.style.visibility="visible"; };
+    img.onerror=function(){ img.style.visibility="hidden"; };
+    img.src=clean;
+  }catch(err){
+    console.error("Thumbnail image error:",err);
+    img.style.visibility="hidden";
+  }
+}
+
+function photoUrl(v){
+  if(!v) return "";
+  if(typeof v === "string") return v.trim();
+  if(typeof v === "object"){
+    const u=v.url||v.src||v.downloadURL||v.downloadUrl||v.imageUrl||v.imageURL||v.photoUrl||v.photoURL;
+    return u ? String(u).trim() : "";
+  }
+  return "";
+}
+
+function getPhotos(n){
+  if(!n) return [];
+  const raw = [];
+  if(Array.isArray(n.photos)) raw.push(...n.photos);
+  else if(n.photos) raw.push(n.photos);
+  if(Array.isArray(n.images)) raw.push(...n.images);
+  else if(n.images) raw.push(n.images);
+  raw.push(n.photo,n.image,n.imageUrl,n.imageURL,n.photoUrl,n.photoURL);
+
+  return raw.map(photoUrl).filter(Boolean).map(s=>s.replace(/\s+/g,""));
 }
 
 function getPhoto(n){
-  if(!n) return "";
-  const vals=[
-    n.photo,n.image,n.imageUrl,n.imageURL,n.photoUrl,n.photoURL,
-    Array.isArray(n.photos)?n.photos[0]:n.photos,
-    Array.isArray(n.images)?n.images[0]:n.images
-  ];
-  for(const v of vals){
-    if(typeof v==="string" && v.trim()) return v.trim().replace(/\s+/g,"");
-    if(v && typeof v==="object"){
-      const u=v.url||v.src||v.downloadURL||v.downloadUrl||v.imageUrl||v.imageURL||v.photoUrl||v.photoURL;
-      if(u) return String(u).trim().replace(/\s+/g,"");
-    }
-  }
-  return "";
+  return getPhotos(n)[0] || "";
 }
 
 function categoryLabel(n){
@@ -2186,10 +2225,10 @@ async function openSharedPageDirect(){
     document.getElementById("shareBody").textContent=n.body||"";
 
     const gallery=document.getElementById("shareGallery");
-    const photos=Array.isArray(n.photos)&&n.photos.length?n.photos:(n.photo?[n.photo]:[]);
-    photos.slice(0,3).forEach(src=>{
+    const photos=getPhotos(n).slice(0,3);
+    photos.forEach(src=>{
       const img=document.createElement("img");
-      img.src=src;
+      setNewsImage(img,src);
       img.alt=n.title||"खबर";
       img.onerror=()=>img.remove();
       gallery.appendChild(img);
