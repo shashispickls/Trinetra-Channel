@@ -927,555 +927,10 @@ linear-gradient(135deg,#9ca3af,#1f2937);}
 
 .news-thumb{overflow:hidden;position:relative;}
 .news-thumb img{position:absolute;inset:0;width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;}
-
-/* ===== TRINETRA ARTICLE PORTAL — NEWS ARTICLE INTERFACE ===== */
-.tn-article-page{
-  max-width:1200px;
-  margin:18px auto 45px;
-  padding:0 15px;
-}
-.tn-article-layout{
-  display:grid;
-  grid-template-columns:minmax(0,2fr) minmax(280px,1fr);
-  gap:22px;
-  align-items:start;
-}
-.tn-article-main{
-  background:#fff;
-  border:1px solid #e3e3e3;
-  border-radius:8px;
-  padding:22px 24px 28px;
-  box-shadow:0 2px 12px rgba(0,0,0,.05);
-}
-.tn-breadcrumb{
-  color:#b91c1c;
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:10px;
-}
-.tn-article-category{
-  display:inline-block;
-  background:#b91c1c;
-  color:#fff;
-  padding:5px 10px;
-  border-radius:3px;
-  font-size:12px;
-  font-weight:800;
-  margin-bottom:10px;
-}
-.tn-article-title{
-  font-size:38px;
-  line-height:1.2;
-  color:#111;
-  font-weight:900;
-  margin:0 0 12px;
-}
-.tn-article-summary{
-  font-size:19px;
-  line-height:1.6;
-  color:#444;
-  font-weight:600;
-  border-left:4px solid #b91c1c;
-  padding:9px 13px;
-  margin:0 0 14px;
-  background:#fafafa;
-}
-.tn-article-meta{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  align-items:center;
-  color:#777;
-  font-size:12px;
-  border-bottom:1px solid #eee;
-  padding-bottom:13px;
-  margin-bottom:18px;
-}
-.tn-article-hero{
-  width:100%;
-  height:auto;
-  max-height:620px;
-  object-fit:contain;
-  display:block;
-  border-radius:7px;
-  background:#f3f4f6;
-  margin:0 0 18px;
-}
-.tn-article-body{
-  font-size:18px;
-  line-height:1.95;
-  color:#202020;
-}
-.tn-article-body p{
-  margin:0 0 18px;
-}
-.tn-article-body h2{
-  font-size:24px;
-  line-height:1.35;
-  margin:26px 0 10px;
-  padding-left:10px;
-  border-left:4px solid #b91c1c;
-}
-.tn-article-body h3{
-  font-size:20px;
-  margin:22px 0 8px;
-}
-.tn-article-share{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin:18px 0 20px;
-  padding:14px 0;
-  border-top:1px solid #eee;
-  border-bottom:1px solid #eee;
-}
-.tn-share-btn{
-  border:0;
-  border-radius:5px;
-  padding:10px 15px;
-  color:#fff;
-  font-weight:800;
-  cursor:pointer;
-}
-.tn-share-btn.red{background:#b91c1c}
-.tn-share-btn.dark{background:#222}
-.tn-article-gallery{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin:18px 0;
-}
-.tn-article-gallery img{
-  width:100%;
-  height:auto;
-  max-height:420px;
-  object-fit:contain;
-  display:block;
-  border-radius:7px;
-  background:#f8fafc;
-}
-.tn-author-box{
-  margin-top:24px;
-  padding:16px;
-  background:#f7f7f7;
-  border:1px solid #e5e5e5;
-  border-radius:7px;
-}
-.tn-author-box strong{display:block;font-size:16px;margin-bottom:5px}
-.tn-author-box span{color:#666;font-size:13px;line-height:1.6}
-.tn-article-side{
-  position:sticky;
-  top:75px;
-}
-.tn-side-box{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:7px;
-  overflow:hidden;
-  margin-bottom:16px;
-}
-.tn-side-title{
-  margin:0;
-  padding:10px 13px;
-  color:#fff;
-  background:#b91c1c;
-  font-size:19px;
-  font-weight:900;
-}
-.tn-side-list{
-  padding:8px 12px;
-}
-.tn-related-item{
-  display:flex;
-  gap:10px;
-  padding:10px 0;
-  border-bottom:1px solid #eee;
-  cursor:pointer;
-}
-.tn-related-item:last-child{border-bottom:0}
-.tn-related-thumb{
-  width:100px;
-  height:72px;
-  flex:0 0 100px;
-  border-radius:5px;
-  overflow:hidden;
-  background:#ddd;
-}
-.tn-related-thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-.tn-related-copy h4{
-  margin:0;
-  font-size:14px;
-  line-height:1.4;
-  color:#222;
-}
-.tn-related-copy small{
-  display:block;
-  color:#888;
-  margin-top:5px;
-  font-size:11px;
-}
-.tn-ad-box{
-  min-height:180px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fafafa;
-  color:#aaa;
-  font-size:11px;
-}
-.tn-back{
-  display:inline-block;
-  margin-bottom:12px;
-  color:#b91c1c;
-  font-weight:800;
-}
-.tn-related-section{
-  margin-top:24px;
-}
-.tn-related-section .section-title{margin-bottom:12px}
-
-/* Article modal uses the same portal interface */
-#articleModal .modal-box{
-  max-width:1200px;
-  border-radius:8px;
-}
-#articleModal .modal-header{
-  position:sticky;
-  top:0;
-  z-index:5;
-  background:#fff;
-}
-#articleModal .modal-content{
-  padding:0;
-}
-#articleModal .tn-article-page{
-  margin:0;
-  max-width:none;
-}
-@media(max-width:800px){
-  .tn-article-layout{grid-template-columns:1fr}
-  .tn-article-side{position:static}
-  .tn-article-main{padding:17px 14px 24px}
-  .tn-article-title{font-size:27px}
-  .tn-article-summary{font-size:16px}
-  .tn-article-body{font-size:16px;line-height:1.85}
-  .tn-article-gallery{grid-template-columns:1fr}
-  .tn-related-thumb{width:90px;flex-basis:90px}
-}
-@media(max-width:450px){
-  .tn-article-page{padding:0 10px}
-  .tn-article-title{font-size:23px}
-  .tn-article-body{font-size:15px}
-}
-
-
-/* ===== TRINETRA — PREMIUM NEWS PORTAL SKIN =====
-   Times Now Hindi से प्रेरित clean editorial layout,
-   लेकिन Trinetra की अपनी branding/colors बरकरार। */
-body{
-  background:#f3f4f6;
-  color:#151515;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-}
-.topbar{
-  background:#111;
-  border-bottom:1px solid #292929;
-  padding:8px 0;
-}
-.topbar-inner{
-  max-width:1280px;
-  padding:0 18px;
-  font-size:12px;
-}
-.header{
-  background:#fff;
-  border-bottom:1px solid #e5e5e5;
-}
-.header-inner{
-  max-width:1280px;
-  min-height:102px;
-  padding:13px 18px;
-}
-.brand{
-  gap:0;
-}
-.logo{
-  width:82px;
-  height:82px;
-}
-.brand-text .site-brand-image{
-  width:320px;
-  max-height:82px;
-}
-.header-actions{
-  gap:12px;
-}
-.search-box{
-  height:42px;
-  border:1px solid #d7d7d7;
-  border-radius:2px;
-  box-shadow:0 1px 4px rgba(0,0,0,.06);
-}
-.search-box input{
-  width:230px;
-  padding:0 12px;
-  font-size:14px;
-}
-.search-box button{
-  width:48px;
-  padding:0;
-  font-size:17px;
-}
-.admin-btn{
-  height:42px;
-  padding:0 17px;
-  border-radius:2px;
-  font-size:13px;
-  font-weight:800;
-}
-.nav{
-  background:#fff;
-  color:#171717;
-  border-top:1px solid #ededed;
-  border-bottom:2px solid #b91c1c;
-  position:sticky;
-  top:0;
-  box-shadow:0 2px 7px rgba(0,0,0,.05);
-}
-.nav-inner{
-  max-width:1280px;
-  padding:0 10px;
-}
-.nav a{
-  position:relative;
-  padding:14px 15px 13px;
-  font-size:14px;
-  font-weight:800;
-}
-.nav a:after{
-  content:"";
-  position:absolute;
-  left:12px;
-  right:12px;
-  bottom:-2px;
-  height:3px;
-  background:transparent;
-}
-.nav a:hover{
-  background:#fafafa;
-  color:#b91c1c;
-}
-.nav a:hover:after{
-  background:#b91c1c;
-}
-.breaking{
-  background:#111;
-  box-shadow:none;
-  border-top:1px solid #222;
-  border-bottom:1px solid #222;
-}
-.breaking-inner{
-  max-width:1280px;
-  min-height:48px;
-}
-.breaking-title{
-  min-width:145px;
-  background:#b91c1c;
-  padding:12px 16px;
-}
-.breaking-news{
-  font-size:14px;
-}
-.container{
-  max-width:1280px;
-  margin:24px auto;
-  padding:0 18px;
-}
-.section-title{
-  border-left:0;
-  border-bottom:2px solid #b91c1c;
-  padding:0 0 8px;
-  margin-bottom:15px;
-}
-.section-title h2{
-  font-size:22px;
-  font-weight:900;
-}
-.section-title a{
-  font-size:13px;
-  color:#b91c1c;
-}
-.hero{
-  grid-template-columns:minmax(0,2fr) minmax(310px,1fr);
-  gap:20px;
-}
-.hero-main{
-  min-height:430px;
-  border-radius:3px;
-  box-shadow:0 2px 12px rgba(0,0,0,.12);
-}
-.hero-content{
-  padding:28px;
-}
-.hero-content h2{
-  font-size:31px;
-  line-height:1.28;
-  text-shadow:0 2px 4px rgba(0,0,0,.55);
-}
-.category{
-  border-radius:2px;
-  padding:5px 10px;
-  font-size:12px;
-}
-.side-news{
-  gap:0;
-  background:#fff;
-  border:1px solid #ddd;
-}
-.side-card{
-  border:0;
-  border-bottom:1px solid #e5e5e5;
-  border-radius:0;
-  padding:10px;
-}
-.side-card:last-child{
-  border-bottom:0;
-}
-.side-thumb{
-  width:120px;
-  min-height:90px;
-}
-.side-content{
-  padding:3px 5px 3px 11px;
-}
-.side-content h3{
-  font-size:15px;
-  font-weight:800;
-  line-height:1.4;
-}
-.news-grid{
-  gap:18px;
-}
-.news-card{
-  border-radius:3px;
-  border:1px solid #ddd;
-  box-shadow:0 1px 7px rgba(0,0,0,.05);
-}
-.news-card:hover{
-  transform:none;
-  box-shadow:0 3px 13px rgba(0,0,0,.12);
-}
-.news-thumb{
-  height:190px;
-}
-.news-body{
-  padding:14px;
-}
-.news-body h3{
-  font-size:17px;
-  font-weight:800;
-  line-height:1.45;
-}
-.news-body p{
-  font-size:13px;
-  line-height:1.5;
-}
-.news-date{
-  font-size:11px;
-}
-.tn-article-page{
-  max-width:1280px;
-}
-.tn-article-layout{
-  grid-template-columns:minmax(0,2.15fr) minmax(300px,.85fr);
-  gap:24px;
-}
-.tn-article-main{
-  border:0;
-  border-radius:3px;
-  padding:28px 30px 34px;
-  box-shadow:0 2px 12px rgba(0,0,0,.07);
-}
-.tn-article-title{
-  font-size:42px;
-  font-weight:900;
-  letter-spacing:-.3px;
-}
-.tn-article-summary{
-  font-size:19px;
-  border-left:3px solid #b91c1c;
-  background:#f8f8f8;
-}
-.tn-article-meta{
-  font-size:12px;
-}
-.tn-article-hero{
-  border-radius:3px;
-  background:#eee;
-}
-.tn-article-body{
-  font-size:18px;
-  line-height:2;
-}
-.tn-article-body h2{
-  font-size:25px;
-}
-.tn-article-side{
-  top:70px;
-}
-.tn-side-box{
-  border-radius:3px;
-}
-.tn-side-title{
-  background:#111;
-  border-left:5px solid #b91c1c;
-  padding:11px 14px;
-}
-.tn-related-section .section-title h2{
-  font-size:22px;
-}
-@media(max-width:800px){
-  .header-inner{min-height:auto;padding:9px 10px}
-  .logo{width:55px;height:55px}
-  .brand-text .site-brand-image{width:220px;max-height:55px}
-  .nav a{padding:11px 12px;font-size:12px}
-  .breaking-title{min-width:auto;padding:9px 11px}
-  .breaking-news{font-size:11px}
-  .container{margin:15px auto;padding:0 10px}
-  .hero-main{min-height:300px}
-  .hero-content h2{font-size:22px}
-  .tn-article-main{padding:18px 14px 24px}
-  .tn-article-title{font-size:29px}
-}
-@media(max-width:450px){
-  .brand-text .site-brand-image{width:195px;max-height:50px}
-  .tn-article-title{font-size:24px}
-}
-
-
-.direct-article-mode #home{display:none !important;}
-.direct-article-mode #sharedNewsPage{display:block !important;}
-
 </style>
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8892976990257509"
 crossorigin="anonymous"></script>
-
-<script>
-(function(){
-  try{
-    if(new URLSearchParams(window.location.search).has("news")){
-      document.documentElement.classList.add("direct-article-mode");
-    }
-  }catch(e){}
-})();
-</script>
-
 </head>
 
 <body>
@@ -1562,56 +1017,19 @@ crossorigin="anonymous"></script>
 </div>
 
 
-<section id="sharedNewsPage" style="display:none;">
-  <div class="tn-article-page">
-    <a href="/" id="sharedHomeLink" class="tn-back">← होम पर वापस जाएँ</a>
-
-    <div class="tn-article-layout">
-      <article class="tn-article-main">
-        <div class="tn-breadcrumb">Trinetra Channel • <span id="shareBreadCat">समाचार</span></div>
-        <span id="shareCat" class="tn-article-category"></span>
-        <h1 id="shareTitle" class="tn-article-title"></h1>
-        <div id="shareSummary" class="tn-article-summary"></div>
-        <div id="shareDate" class="tn-article-meta"></div>
-
-        <img id="shareHero" class="tn-article-hero" src="" alt="" style="display:none;">
-
-        <div class="tn-article-share">
-          <button type="button" class="tn-share-btn red" onclick="shareCurrentNews()">📤 खबर शेयर करें</button>
-          <button type="button" class="tn-share-btn dark" onclick="copyCurrentNewsLink()">🔗 Link Copy</button>
-        </div>
-
-        <div id="shareBody" class="tn-article-body"></div>
-        <div id="shareGallery" class="tn-article-gallery"></div>
-
-        <div class="tn-author-box">
-          <strong>Trinetra Channel</strong>
-          <span>यह खबर Trinetra Channel के डिजिटल न्यूज़ डेस्क पर प्रकाशित की गई है।</span>
-        </div>
-      </article>
-
-      <aside class="tn-article-side">
-        <div class="tn-side-box">
-          <h2 class="tn-side-title">ताज़ा खबरें</h2>
-          <div id="shareLatest" class="tn-side-list"></div>
-        </div>
-
-        <div class="tn-side-box">
-          <div class="tn-ad-box">
-            <ins class="adsbygoogle" style="display:block;width:100%;min-height:160px"
-                 data-ad-format="auto" data-full-width-responsive="true"></ins>
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <div class="tn-related-section">
-      <div class="section-title"><h2>📰 संबंधित खबरें</h2></div>
-      <div id="sharedRelated" class="news-grid"></div>
-    </div>
+<section id="sharedNewsPage" style="display:none;max-width:900px;margin:18px auto 40px;padding:0 15px;">
+  <a href="/" id="sharedHomeLink" style="display:inline-block;margin-bottom:14px;color:#b91c1c;font-weight:800;text-decoration:none;">← होम पर वापस जाएँ</a>
+  <div id="sharedNewsMount"></div>
+  <div style="margin:14px 0 18px;display:flex;gap:10px;flex-wrap:wrap;">
+    <button type="button" onclick="shareCurrentNews()" style="background:#b91c1c;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:800;cursor:pointer;">📤 खबर शेयर करें</button>
+    <button type="button" onclick="copyCurrentNewsLink()" style="background:#333;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:800;cursor:pointer;">🔗 Link Copy</button>
   </div>
+  <div style="min-height:100px;margin:22px 0;text-align:center;">
+    <ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+  <div class="section-title"><h2>📰 नीचे पढ़ें — अन्य खबरें</h2></div>
+  <div id="sharedRelated" class="news-grid"></div>
 </section>
-
 <main id="home">
 
 <div class="container">
@@ -2127,50 +1545,58 @@ crossorigin="anonymous"></script>
 
 
 <!-- ARTICLE MODAL -->
-<div id="articleModal" class="modal" onclick="closeOutside(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <strong>Trinetra Channel</strong>
-      <button class="close" onclick="closeArticle()">×</button>
-    </div>
+<div id="articleModal"
+     class="modal"
+     onclick="closeOutside(event)">
 
-    <div class="modal-content">
-      <div class="tn-article-page">
-        <div class="tn-article-layout">
-          <article class="tn-article-main">
-            <div class="tn-breadcrumb">Trinetra Channel • <span id="modalBreadCat">समाचार</span></div>
-            <span id="articleCategory" class="tn-article-category"></span>
-            <h1 id="articleTitle" class="tn-article-title"></h1>
-            <div id="articleSummary" class="tn-article-summary"></div>
-            <div id="articleDate" class="tn-article-meta">Trinetra Channel</div>
+    <div class="modal-box">
 
-            <img id="articleHero" class="tn-article-hero" src="" alt="" style="display:none;">
+        <div class="modal-header">
 
-            <div class="tn-article-share">
-              <button type="button" class="tn-share-btn red" onclick="shareCurrentNews()">📤 खबर शेयर करें</button>
-              <button type="button" class="tn-share-btn dark" onclick="copyCurrentNewsLink()">🔗 Link Copy</button>
-            </div>
+            <strong>
+                Trinetra Channel
+            </strong>
 
-            <div id="articleText" class="tn-article-body"></div>
-            <div id="articlePhotoGallery" class="tn-article-gallery"></div>
+            <button class="close"
+                    onclick="closeArticle()">
+                ×
+            </button>
 
-            <div class="tn-author-box">
-              <strong>Trinetra Channel</strong>
-              <span>यह खबर Trinetra Channel के डिजिटल न्यूज़ डेस्क पर प्रकाशित की गई है।</span>
-            </div>
-          </article>
-
-          <aside class="tn-article-side">
-            <div class="tn-side-box">
-              <h2 class="tn-side-title">ताज़ा खबरें</h2>
-              <div id="modalLatest" class="tn-side-list"></div>
-            </div>
-          </aside>
         </div>
-      </div>
-    </div>
-  </div>
+
+        <div class="modal-content">
+
+            <span id="articleCategory"
+                  class="category">
+            </span>
+
+            <h1 id="articleTitle"></h1>
+
+            <div class="modal-meta">
+                <span id="articleDate">Trinetra Channel</span>
+            </div>
+
+            <div class="article-image"></div>
+            <div id="articlePhotoGallery" class="article-photo-gallery"></div>
+
+            <div id="topShareButton" style="margin:12px 0 16px;">
+<button type="button" onclick="shareCurrentNews()" style="background:#b91c1c;color:#fff;border:0;border-radius:6px;padding:10px 18px;font-size:15px;font-weight:700;cursor:pointer;">📤 खबर शेयर करें</button>
 </div>
+<div id="articleText"
+                 class="article-text">
+            </div>
+
+            <div id="articleShareButtons" style="margin:16px 0;display:flex;gap:10px;flex-wrap:wrap;">
+              <button type="button" onclick="shareCurrentNews()" style="background:#b91c1c;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:800;cursor:pointer;">📤 Share</button>
+              <button type="button" onclick="copyCurrentNewsLink()" style="background:#333;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:800;cursor:pointer;">🔗 Link Copy</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
 
@@ -2224,156 +1650,41 @@ function copyCurrentNewsLink(){
   }
 }
 
-function articleSummary(n, body){
-  const explicit = n && (n.summary || n.subtitle || n.description || n.excerpt);
-  if(explicit) return String(explicit).trim();
-  const clean = String(body || "").replace(/\s+/g," ").trim();
-  return clean.length > 220 ? clean.slice(0,220) + "..." : clean;
-}
+function openArticle(title, category, text, photo, date, newsItem){
+  currentNewsForShare=newsItem||currentNewsForShare;
+  document.getElementById("articleTitle").innerText=title||"बिना शीर्षक";
+  document.getElementById("articleCategory").innerText=category||"समाचार";
+  document.getElementById("articleText").innerText=text||"";
 
-function renderArticleBody(el, body){
-  if(!el) return;
-  el.innerHTML = "";
-  const raw = String(body || "").replace(/\r\n/g,"\n").trim();
-  if(!raw){
-    const p=document.createElement("p");
-    p.textContent="इस खबर की विस्तृत जानकारी उपलब्ध नहीं है।";
-    el.appendChild(p);
-    return;
-  }
+  const meta=document.getElementById("articleDate");
+  if(meta) meta.textContent="Trinetra Channel | "+(date||"ताजा खबर");
 
-  const blocks=raw.split(/\n{2,}/).map(s=>s.trim()).filter(Boolean);
-  blocks.forEach(block=>{
-    const lines=block.split("\n").map(s=>s.trim()).filter(Boolean);
-    if(lines.length===1 && /^#{2,3}\s+/.test(lines[0])){
-      const h=document.createElement(lines[0].startsWith("###")?"h3":"h2");
-      h.textContent=lines[0].replace(/^#{2,3}\s+/,"");
-      el.appendChild(h);
-    }else{
-      const p=document.createElement("p");
-      p.textContent=lines.join(" ");
-      el.appendChild(p);
-    }
-  });
-}
+  const item=newsItem||{};
+  const photos=Array.isArray(item.photos) && item.photos.length
+    ? item.photos.slice(0,3)
+    : (photo ? [photo] : []);
 
-function fillLatestList(containerId, currentId){
-  const box=document.getElementById(containerId);
-  if(!box) return;
-  box.innerHTML="";
-  const latest=(window.allNews||[])
-    .filter(n=>n.id!==currentId)
-    .slice(0,5);
+  const image=document.querySelector(".article-image");
+  const gallery=document.getElementById("articlePhotoGallery");
 
-  latest.forEach(n=>{
-    const item=document.createElement("div");
-    item.className="tn-related-item";
-    item.onclick=()=>openArticleFromNews(n);
-
-    const thumb=document.createElement("div");
-    thumb.className="tn-related-thumb";
-    const photo=window.getPhoto ? window.getPhoto(n) : "";
-    if(photo){
-      const img=document.createElement("img");
-      setNewsImage(img,photo);
-      img.alt=n.title||"खबर";
-      thumb.appendChild(img);
-    }
-
-    const copy=document.createElement("div");
-    copy.className="tn-related-copy";
-    const h=document.createElement("h4");
-    h.textContent=n.title||"बिना शीर्षक";
-    const small=document.createElement("small");
-    small.textContent=(window.newsDate ? window.newsDate(n) : "ताजा खबर");
-    copy.append(h,small);
-    item.append(thumb,copy);
-    box.appendChild(item);
-  });
-
-  if(!latest.length){
-    box.innerHTML='<div style="padding:12px;color:#777;font-size:13px;">अभी कोई दूसरी खबर उपलब्ध नहीं है।</div>';
-  }
-}
-
-function populateArticleView(prefix, n, fallbackTitle, fallbackCategory, fallbackText, fallbackPhoto, fallbackDate){
-  const title=n?.title || fallbackTitle || "बिना शीर्षक";
-  const category=window.categoryLabel ? window.categoryLabel(n||{}) : (fallbackCategory||"समाचार");
-  const body=n?.body || fallbackText || "";
-  const date=window.newsDate ? window.newsDate(n||{}) : (fallbackDate||"ताजा खबर");
-  const photos=Array.isArray(n?.photos) && n.photos.length
-    ? n.photos.filter(Boolean)
-    : ((n?.photo || fallbackPhoto) ? [n?.photo || fallbackPhoto] : []);
-  const summary=articleSummary(n||{},body);
-
-  const idMap={
-    title:prefix==="modal"?"articleTitle":"shareTitle",
-    cat:prefix==="modal"?"articleCategory":"shareCat",
-    bread:prefix==="modal"?"modalBreadCat":"shareBreadCat",
-    summary:prefix==="modal"?"articleSummary":"shareSummary",
-    date:prefix==="modal"?"articleDate":"shareDate",
-    hero:prefix==="modal"?"articleHero":"shareHero",
-    body:prefix==="modal"?"articleText":"shareBody",
-    gallery:prefix==="modal"?"articlePhotoGallery":"shareGallery"
-  };
-
-  document.getElementById(idMap.title).textContent=title;
-  document.getElementById(idMap.cat).textContent=category;
-  document.getElementById(idMap.bread).textContent=category;
-  document.getElementById(idMap.summary).textContent=summary;
-  document.getElementById(idMap.date).textContent="🕒 "+date+"  |  📰 Trinetra Channel";
-
-  const hero=document.getElementById(idMap.hero);
-  const gallery=document.getElementById(idMap.gallery);
-
-  if(hero){
-    if(photos[0]){
-      hero.src=photos[0];
-      hero.alt=title;
-      hero.style.display="block";
-      hero.onerror=()=>{hero.style.display="none";};
-    }else{
-      hero.removeAttribute("src");
-      hero.style.display="none";
-    }
+  if(image){
+    image.style.display="none";
+    image.style.backgroundImage="";
   }
 
   if(gallery){
     gallery.innerHTML="";
-    photos.slice(1,6).forEach((src,i)=>{
+    photos.forEach((src,i)=>{
       const img=document.createElement("img");
       img.src=src;
-      img.alt=title+" — फोटो "+(i+2);
-      img.onerror=()=>img.remove();
+      img.alt="खबर की फोटो "+(i+1);
       gallery.appendChild(img);
     });
-    gallery.style.display=photos.length>1?"grid":"none";
+    gallery.style.display=photos.length ? "grid" : "none";
   }
 
-  renderArticleBody(document.getElementById(idMap.body),body);
-  return {title,category,body,date,photos};
-}
-
-function openArticle(title, category, text, photo, date, newsItem){
-  const n = newsItem || currentNewsForShare || {
-    title, category, body:text, photo, date
-  };
-
-  // Open the full article page directly — no popup/modal.
-  if(n && n.id){
-    location.href = "/?news=" + encodeURIComponent(n.id);
-    return;
-  }
-
-  // Fallback for older calls that do not have a Firebase news id.
-  currentNewsForShare = n;
-  const modal = document.getElementById("articleModal");
-  if(modal){
-    populateArticleView("modal", n, title, category, text, photo, date);
-    if(window.fillLatestList) window.fillLatestList("modalLatest", n.id);
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden";
-  }
+  document.getElementById("articleModal").style.display="block";
+  document.body.style.overflow="hidden";
 }
 
 function openArticleFromNews(n){
@@ -2386,8 +1697,10 @@ function openArticleFromNews(n){
 
 /* ARTICLE CLOSE */
 function closeArticle(){
+
     document.getElementById("articleModal").style.display = "none";
-    document.body.style.overflow = "";
+
+    document.body.style.overflow = "auto";
 }
 
 
@@ -2872,35 +2185,49 @@ async function openSharedPageDirect(){
   try{
     const snap=await getDocs(collection(db,"news"));
     const doc=snap.docs.find(d=>d.id===id);
-    if(!doc){
-      const page=document.getElementById("sharedNewsPage");
-      if(page){
-        page.style.display="block";
-        const mount=page.querySelector(".tn-article-main");
-        if(mount){
-          mount.innerHTML='<div style="padding:35px;text-align:center;"><h2>खबर नहीं मिली</h2><p>यह खबर Firebase में उपलब्ध नहीं है या उसका लिंक पुराना है।</p><a href="/" style="color:#b91c1c;font-weight:800;">← होम पर वापस जाएँ</a></div>';
-        }
-      }
-      return;
-    }
+    if(!doc) return;
 
     const n={id:doc.id,...doc.data()};
     const home=document.getElementById("home");
     const page=document.getElementById("sharedNewsPage");
-    if(!page) return;
+    const mount=document.getElementById("sharedNewsMount");
+    if(!page||!mount) return;
 
     if(home) home.style.display="none";
     page.style.display="block";
 
-    populateArticleView("share",n);
+    // Reuse the site's existing article renderer so its proven photo/Firebase logic is unchanged.
+    mount.innerHTML=`
+      <div class="article-modal-content" style="position:relative;display:block;max-width:900px;margin:0;">
+        <div class="article-category" id="shareCat"></div>
+        <h1 id="shareTitle"></h1>
+        <div class="article-date" id="shareDate"></div>
+        <div class="article-photo-gallery" id="shareGallery"></div>
+        <div class="article-text" id="shareBody"></div>
+      </div>`;
+
+    document.getElementById("shareCat").textContent=categoryLabel(n);
+    document.getElementById("shareTitle").textContent=n.title||"बिना शीर्षक";
+    document.getElementById("shareDate").textContent="Trinetra Channel | "+newsDate(n);
+    document.getElementById("shareBody").textContent=n.body||"";
+
+    const gallery=document.getElementById("shareGallery");
+    const photos=Array.isArray(n.photos)&&n.photos.length?n.photos:(n.photo?[n.photo]:[]);
+    photos.slice(0,3).forEach(src=>{
+      const img=document.createElement("img");
+      img.src=src;
+      img.alt=n.title||"खबर";
+      img.onerror=()=>img.remove();
+      gallery.appendChild(img);
+    });
 
     currentNewsForShare=n;
-    fillLatestList("shareLatest",n.id);
 
     const related=document.getElementById("sharedRelated");
     related.innerHTML="";
     allNews.filter(x=>x.id!==n.id).slice(0,6).forEach(r=>{
-      related.appendChild(makeCard(r));
+      const card=makeCard(r);
+      related.appendChild(card);
     });
 
     document.getElementById("sharedHomeLink").onclick=(e)=>{
@@ -2915,8 +2242,6 @@ async function openSharedPageDirect(){
   }
 }
 
-window.fillLatestList = fillLatestList;
-
 async function loadNews(){
   try{
     const snap = await getDocs(collection(db,"news"));
@@ -2925,7 +2250,7 @@ async function loadNews(){
       .filter(n => n.status !== "draft");
     window.allNews = allNews;
     renderNews();
-    await openSharedPageDirect();
+    openSharedPageDirect();
   }catch(err){
     console.error("Firebase news load error:", err);
     document.querySelectorAll(".news-grid,.side-news").forEach(el=>{
