@@ -2872,7 +2872,17 @@ async function openSharedPageDirect(){
   try{
     const snap=await getDocs(collection(db,"news"));
     const doc=snap.docs.find(d=>d.id===id);
-    if(!doc) return;
+    if(!doc){
+      const page=document.getElementById("sharedNewsPage");
+      if(page){
+        page.style.display="block";
+        const mount=page.querySelector(".tn-article-main");
+        if(mount){
+          mount.innerHTML='<div style="padding:35px;text-align:center;"><h2>खबर नहीं मिली</h2><p>यह खबर Firebase में उपलब्ध नहीं है या उसका लिंक पुराना है।</p><a href="/" style="color:#b91c1c;font-weight:800;">← होम पर वापस जाएँ</a></div>';
+        }
+      }
+      return;
+    }
 
     const n={id:doc.id,...doc.data()};
     const home=document.getElementById("home");
@@ -2905,9 +2915,9 @@ async function openSharedPageDirect(){
   }
 }
 
-async window.fillLatestList = fillLatestList;
+window.fillLatestList = fillLatestList;
 
-function loadNews(){
+async function loadNews(){
   try{
     const snap = await getDocs(collection(db,"news"));
     allNews = snap.docs
