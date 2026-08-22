@@ -135,6 +135,7 @@ button{border:0;border-radius:10px;padding:12px 16px;font-weight:800;cursor:poin
   <a href="https://trinetrachannel.in/" class="home-btn">🏠 Home</a>
   <button id="logoutBtn" class="logout">Logout</button>
   <h2 id="formHeading">📰 नई खबर तैयार करें</h2>
+  <button type="button" id="openAdsBtn" class="secondary" style="margin:10px 0;width:100%;font-size:15px">📢 विज्ञापन जोड़ें / Manage करें</button>
 
   <div class="notice">
     खबर Save करने पर वह Firebase Firestore के <b>news</b> collection में सुरक्षित होगी।
@@ -192,6 +193,51 @@ button{border:0;border-radius:10px;padding:12px 16px;font-weight:800;cursor:poin
   <div id="saveError" class="error"></div>
 
   <div id="preview" class="preview"></div>
+</section>
+
+<section id="adsCard" class="card" style="display:none">
+  <h2 style="color:#b91c1c">📢 विज्ञापन प्रबंधन</h2>
+  <div class="notice">यहाँ से Home Page पर दिखने वाले विज्ञापन जोड़ें, Edit करें, Active/Inactive करें और Delete करें।</div>
+
+  <input id="adEditId" type="hidden">
+
+  <label>विज्ञापन का नाम</label>
+  <input id="adTitle" placeholder="जैसे — Shashi's Pickles">
+
+  <label>📷 विज्ञापन बैनर / फोटो</label>
+  <input id="adPhoto" type="file" accept="image/*">
+  <div class="hint">फोटो/बैनर 700 KB से छोटी रखें।</div>
+  <div id="adPhotoPreview" style="margin-top:10px"></div>
+
+  <div class="row">
+    <div>
+      <label>📞 मोबाइल नंबर</label>
+      <input id="adPhone" placeholder="जैसे 9918790730">
+    </div>
+    <div>
+      <label>🔗 Website / Link</label>
+      <input id="adLink" placeholder="https://example.com">
+    </div>
+  </div>
+
+  <label>📝 छोटा विवरण</label>
+  <textarea id="adDescription" style="min-height:100px" placeholder="विज्ञापन के बारे में जानकारी..."></textarea>
+
+  <label style="display:flex;align-items:center;gap:8px;font-weight:700">
+    <input id="adActive" type="checkbox" checked style="width:auto">
+    वेबसाइट पर विज्ञापन दिखाएँ
+  </label>
+
+  <button id="adSaveBtn" class="primary">📢 विज्ञापन Save करें</button>
+  <button id="adCancelBtn" class="secondary" style="margin-top:10px;display:none">❌ Edit Cancel करें</button>
+  <div id="adStatus" class="success"></div>
+  <div id="adError" class="error"></div>
+
+  <div style="margin-top:22px">
+    <h3>📋 सेव विज्ञापन</h3>
+    <div id="adsLoading" class="hint">विज्ञापन लोड हो रहे हैं...</div>
+    <div id="adsList"></div>
+  </div>
 </section>
 
 <section id="newsListCard" class="card" style="display:none">
@@ -727,16 +773,185 @@ async function deleteNews(id){
   }
 }
 
+// ================= ADVERTISEMENT SYSTEM =================
+let adPhotoData = "";
+
+$("adPhoto").addEventListener("change", async ()=>{
+  const file = $("adPhoto").files?.[0];
+  $("adPhotoPreview").innerHTML = "";
+  adPhotoData = "";
+  if(!file) return;
+  try{
+    adPhotoData = await readPhoto(file);
+    $("adPhotoPreview").innerHTML =
+      '<img src="'+esc(adPhotoData)+'" style="width:100%;max-height:240px;object-fit:cover;border-radius:10px">';
+  }catch(err){
+    showAdError(err.message);
+    $("adPhoto").value = "";
+  }
+});
+
+function showAdError(msg){
+  $("adError").textContent = "❌ " + msg;
+  $("adError").style.display = "block";
+}
+function hideAdMessages(){
+  $("adError").style.display = "none";
+  $("adStatus").style.display = "none";
+}
+function resetAdForm(){
+  $("adEditId").value = "";
+  $("adTitle").value = "";
+  $("adPhone").value = "";
+  $("adLink").value = "";
+  $("adDescription").value = "";
+  $("adActive").checked = true;
+  $("adPhoto").value = "";
+  $("adPhotoPreview").innerHTML = "";
+  adPhotoData = "";
+  $("adSaveBtn").textContent = "📢 विज्ञापन Save करें";
+  $("adCancelBtn").style.display = "none";
+  hideAdMessages();
+}
+$("adCancelBtn").addEventListener("click",resetAdForm);
+
+$("adSaveBtn").addEventListener("click",async ()=>{
+  hideAdMessages();
+  const title=$("adTitle").value.trim();
+  const phone=$("adPhone").value.trim();
+  const link=$("adLink").value.trim();
+  const description=$("adDescription").value.trim();
+  const active=$("adActive").checked;
+  const editId=$("adEditId").value;
+
+  if(!title){ showAdError("विज्ञापन का नाम भरना जरूरी है।"); return; }
+  if(!editId && !adPhotoData){ showAdError("विज्ञापन की फोटो/बैनर चुनना जरूरी है।"); return; }
+
+  $("adSaveBtn").disabled=true;
+  $("adSaveBtn").textContent=editId ? "Update हो रहा है..." : "विज्ञापन Save हो रहा है...";
+
+  try{
+    const data={title,phone,link,description,active,updatedAt:serverTimestamp(),
+      authorUid:auth.currentUser.uid,authorEmail:auth.currentUser.email||""};
+    if(adPhotoData) data.photo=adPhotoData;
+
+    if(editId){
+      await updateDoc(doc(db,"ads",editId),data);
+      $("adStatus").textContent="✅ विज्ञापन सफलतापूर्वक Update हो गया।";
+    }else{
+      data.createdAt=serverTimestamp();
+      await addDoc(collection(db,"ads"),data);
+      $("adStatus").textContent="✅ विज्ञापन Firebase में Save हो गया।";
+    }
+    $("adStatus").style.display="block";
+    resetAdForm();
+    await loadAds();
+  }catch(err){
+    console.error(err);
+    showAdError("विज्ञापन Save नहीं हो सका: "+(err.message||err));
+  }finally{
+    $("adSaveBtn").disabled=false;
+    $("adSaveBtn").textContent="📢 विज्ञापन Save करें";
+  }
+});
+
+async function loadAds(){
+  $("adsLoading").style.display="block";
+  $("adsList").innerHTML="";
+  try{
+    const snap=await getDocs(collection(db,"ads"));
+    $("adsLoading").style.display="none";
+    if(snap.empty){
+      $("adsList").innerHTML="<p class='hint'>अभी कोई विज्ञापन सेव नहीं है।</p>";
+      return;
+    }
+    const items=[];
+    snap.forEach(item=>items.push({id:item.id,...item.data()}));
+    items.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+
+    items.forEach(n=>{
+      const div=document.createElement("div");
+      div.className="ad-admin-item";
+      div.innerHTML=
+        "<h3>"+esc(n.title||"बिना नाम")+
+        (n.active
+          ? " <span class='ad-admin-status' style='background:#dcfce7;color:#166534'>ACTIVE</span>"
+          : " <span class='ad-admin-status' style='background:#fee2e2;color:#991b1b'>INACTIVE</span>")+
+        "</h3>"+
+        (n.photo ? "<img src='"+esc(n.photo)+"' alt='Advertisement'>" : "")+
+        (n.phone ? "<div class='meta'>📞 "+esc(n.phone)+"</div>" : "")+
+        (n.description ? "<p>"+esc(n.description)+"</p>" : "")+
+        "<div class='ad-admin-actions'>"+
+        "<button class='secondary adEditBtn'>✏️ Edit</button>"+
+        "<button class='publish adToggleBtn'>"+(n.active?"🔴 Inactive करें":"🟢 Active करें")+"</button>"+
+        "<button class='danger adDeleteBtn'>🗑️ Delete</button>"+
+        "</div>";
+      div.querySelector(".adEditBtn").addEventListener("click",()=>editAd(n.id,n));
+      div.querySelector(".adToggleBtn").addEventListener("click",()=>toggleAd(n.id,n.active));
+      div.querySelector(".adDeleteBtn").addEventListener("click",()=>deleteAd(n.id));
+      $("adsList").appendChild(div);
+    });
+  }catch(err){
+    $("adsLoading").style.display="none";
+    showAdError("विज्ञापन लोड नहीं हो सके: "+(err.message||err));
+  }
+}
+
+function editAd(id,n){
+  $("adEditId").value=id;
+  $("adTitle").value=n.title||"";
+  $("adPhone").value=n.phone||"";
+  $("adLink").value=n.link||"";
+  $("adDescription").value=n.description||"";
+  $("adActive").checked=n.active!==false;
+  $("adPhoto").value="";
+  adPhotoData=n.photo||"";
+  $("adPhotoPreview").innerHTML=n.photo
+    ? '<img src="'+esc(n.photo)+'" style="width:100%;max-height:240px;object-fit:cover;border-radius:10px">'
+    : "";
+  $("adSaveBtn").textContent="✏️ विज्ञापन Update करें";
+  $("adCancelBtn").style.display="inline-block";
+  window.scrollTo({top:$("adsCard").offsetTop-15,behavior:"smooth"});
+}
+
+async function toggleAd(id,current){
+  try{
+    await updateDoc(doc(db,"ads",id),{active:!current,updatedAt:serverTimestamp()});
+    await loadAds();
+  }catch(err){ showAdError("विज्ञापन की स्थिति बदल नहीं सकी: "+(err.message||err)); }
+}
+
+async function deleteAd(id){
+  if(!confirm("क्या आप यह विज्ञापन Delete करना चाहते हैं?")) return;
+  try{
+    await deleteDoc(doc(db,"ads",id));
+    alert("विज्ञापन Delete हो गया।");
+    await loadAds();
+  }catch(err){ showAdError("विज्ञापन Delete नहीं हो सका: "+(err.message||err)); }
+}
+// ================= END ADVERTISEMENT SYSTEM =================
+
+$("openAdsBtn").addEventListener("click",()=>{
+  const box = $("adsCard");
+  box.style.display = "block";
+  $("openAdsBtn").textContent = "📢 विज्ञापन सेक्शन खुला है";
+  box.scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+
 onAuthStateChanged(auth,user=>{
   if(user){
     $("login").style.display="none";
     $("admin").style.display="block";
     $("newsListCard").style.display="block";
+    $("adsCard").style.display="none";
+    loadAds();
     loadNews();
   }else{
     $("login").style.display="block";
     $("admin").style.display="none";
     $("newsListCard").style.display="none";
+    $("adsCard").style.display="none";
   }
 });
 </script>
