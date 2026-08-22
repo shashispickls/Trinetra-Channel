@@ -1036,7 +1036,7 @@ crossorigin="anonymous"></script>
 
 
 <section id="sharedNewsPage" style="display:none;max-width:900px;margin:18px auto 40px;padding:0 15px;">
-  <a href="/" id="sharedHomeLink" style="display:inline-block;margin-bottom:14px;color:#b91c1c;font-weight:800;text-decoration:none;">← होम पर वापस जाएँ</a>
+  <a href="#" id="sharedHomeLink" style="display:inline-block;margin-bottom:14px;color:#b91c1c;font-weight:800;text-decoration:none;">← होम पर वापस जाएँ</a>
   <div id="sharedNewsMount"></div>
   <div style="margin:14px 0 18px;display:flex;gap:10px;flex-wrap:wrap;">
     <button type="button" onclick="shareCurrentNews()" style="background:#b91c1c;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:800;cursor:pointer;">📤 खबर शेयर करें</button>
@@ -1700,44 +1700,60 @@ function openArticleFromNews(n){
       <span class="tn-article-category">${category}</span>
       <h1 class="tn-article-title"></h1>
       <div class="tn-article-meta"></div>
-      <img class="tn-article-hero" id="pageArticleHero" style="display:none;" alt="">
+
+      <img class="tn-article-hero" id="pageArticleHero" alt="" style="display:none;">
+
       <div class="tn-article-share">
         <button type="button" class="tn-share-btn red" onclick="shareCurrentNews()">📤 खबर शेयर करें</button>
         <button type="button" class="tn-share-btn dark" onclick="copyCurrentNewsLink()">🔗 Link Copy</button>
       </div>
+
       <div class="tn-article-body" id="pageArticleBody"></div>
     </article>
+
     <div class="tn-side-box" style="margin-top:18px;">
       <h2 class="tn-side-title">Advertisement</h2>
       <div class="tn-ad-box">
-        <ins class="adsbygoogle" style="display:block;width:100%;min-height:180px"
-             data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;min-height:180px"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
       </div>
     </div>
+
     <div class="tn-related-section">
       <div class="section-title"><h2>📰 बाकी खबरें</h2></div>
       <div id="pageRelatedNews" class="news-grid"></div>
-    </div>`;
+    </div>
+  `;
 
   mount.querySelector(".tn-article-title").textContent = n.title || "बिना शीर्षक";
   mount.querySelector(".tn-article-meta").textContent =
     "🕒 " + date + " | 📰 Trinetra Channel";
   document.getElementById("pageArticleBody").textContent = n.body || "";
 
+  // Show the article's actual Firebase photo.
   const hero = document.getElementById("pageArticleHero");
   if(photos[0]){
     setNewsImage(hero, photos[0]);
     hero.style.display = "block";
   }
 
+  // Show the other news below the advertisement.
   const related = document.getElementById("pageRelatedNews");
   if(related){
     related.innerHTML = "";
-    allNews.filter(x => x.id !== n.id).slice(0,6)
-      .forEach(r => related.appendChild(makeCard(r)));
+    const others = allNews.filter(x => x.id !== n.id).slice(0, 6);
+    others.forEach(r => related.appendChild(makeCard(r)));
+    if(!others.length){
+      related.innerHTML = '<p class="status">अभी कोई अन्य खबर उपलब्ध नहीं है।</p>';
+    }
   }
 
-  try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+  try{
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  }catch(e){}
+
   window.scrollTo({top:0, behavior:"smooth"});
   document.title = (n.title || "खबर") + " | Trinetra Channel";
 }
