@@ -1164,19 +1164,168 @@ function goToSection(id){
 
     <div class="side-news">
 
-        
+        <article class="side-card"
+                 onclick="openArticle(
+                 'उत्तर प्रदेश की बड़ी खबर',
+                 'उत्तर प्रदेश',
+                 'उत्तर प्रदेश से जुड़ी महत्वपूर्ण खबर और पूरी जानकारी यहां पढ़ें।')">
 
-    </article>
+            <div class="side-thumb"></div>
+
+            <div class="side-content">
+
+                <span class="category">
+                    उत्तर प्रदेश
+                </span>
+
+                <h3>
+                    उत्तर प्रदेश से आज की बड़ी खबर
+                </h3>
+
+                <small>
+                    आज की खबर
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <article class="side-card"
+                 onclick="openArticle(
+                 'देश की बड़ी खबर',
+                 'देश',
+                 'देशभर की महत्वपूर्ण खबरों का पूरा विवरण।')">
+
+            <div class="side-thumb"></div>
+
+            <div class="side-content">
+
+                <span class="category">
+                    देश
+                </span>
+
+                <h3>
+                    देशभर से सामने आई महत्वपूर्ण खबर
+                </h3>
+
+                <small>
+                    राष्ट्रीय समाचार
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <article class="side-card"
+                 onclick="openArticle(
+                 'आज की ताजा खबर',
+                 'Breaking',
+                 'Trinetra Channel पर आज की ताजा जानकारी पढ़ें।')">
+
+            <div class="side-thumb"></div>
+
+            <div class="side-content">
+
+                <span class="category">
+                    Breaking
+                </span>
+
+                <h3>
+                    आज की ताजा खबर यहां पढ़ें
+                </h3>
+
+                <small>
+                    अभी-अभी
+                </small>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+
+<br>
+
+<section class="ads-section" id="advertisements">
+  <div class="section-title">
+    <h2>📢 विज्ञापन</h2>
+  </div>
+  <div id="adsGrid" class="ads-grid">
+    <p class="status">विज्ञापन लोड हो रहे हैं...</p>
+  </div>
+</section>
+
+<br>
+
+<!-- PRATAPGARH -->
+<div id="pratapgarh">
+  <div class="section-title">
+    <h2>📍 प्रतापगढ़ न्यूज़</h2>
+    <a href="#" onclick="openCategoryPage('प्रतापगढ़');return false;">और खबरें →</a>
+  </div>
+  <div class="news-grid" id="pratapgarhGrid"></div>
+</div>
+
+<br><br>
+
+<!-- CATEGORIES -->
+<div class="section-title">
+    <h2>समाचार श्रेणियां</h2>
+</div>
+
+<div class="category-grid">
+
+    <div class="category-box"
+         onclick="scrollToSection('pratapgarh')">
+
+        <span>📍</span>
+        <strong>प्रतापगढ़</strong>
+
+    </div>
+
+    <div class="category-box"
+         onclick="scrollToSection('up')">
+
+        <span>🏛️</span>
+        <strong>उत्तर प्रदेश</strong>
+
+    </div>
+
+    <div class="category-box"
+         onclick="scrollToSection('india')">
+
+        <span>🇮🇳</span>
+        <strong>देश</strong>
+
+    </div>
+</div>
+
+
+<br><br>
+
+
+<!-- UP -->
+<div id="up">
+
+<div class="section-title">
+    <h2>🇮🇳 उत्तर प्रदेश</h2>
+    <a href="#" onclick="openCategoryPage('उत्तर प्रदेश');return false;">और खबरें →</a>
+</div>
+
+<div class="news-grid" id="upGrid">
+
+    
 
 
     
 
-    </article>
-
 
     
-
-    </article>
 
 </div>
 
@@ -1191,9 +1340,10 @@ function goToSection(id){
 
 <div class="section-title">
     <h2>🇮🇳 देश</h2>
+    <a href="#" onclick="openCategoryPage('देश');return false;">और खबरें →</a>
 </div>
 
-<div class="news-grid">
+<div class="news-grid" id="indiaGrid">
 
     
 
@@ -1390,6 +1540,45 @@ function openArticle(title, category, text, photo, date, newsItem){
   if(newsItem){
     openArticleFromNews(newsItem);
   }
+}
+
+
+function openCategoryPage(category){
+  const page = document.getElementById("sharedNewsPage");
+  const mount = document.getElementById("sharedNewsMount");
+  const home = document.getElementById("home");
+  if(!page || !mount) return;
+
+  if(home) home.style.display = "none";
+  page.style.display = "block";
+  window.scrollTo(0,0);
+
+  const all = Array.isArray(window.allNews) ? window.allNews : [];
+  const items = all.filter(n => categoryLabel(n) === category);
+
+  mount.innerHTML = `
+    <div class="tn-article-main">
+      <div class="tn-breadcrumb">Trinetra Channel • ${category}</div>
+      <div class="section-title" style="margin-top:10px;">
+        <h1 style="margin:0;">${category} की सभी खबरें</h1>
+      </div>
+      <div style="margin:12px 0 20px;">
+        <a href="/" onclick="goHomePage();return false;" style="color:#b91c1c;font-weight:700;text-decoration:none;">← होम पर वापस जाएँ</a>
+      </div>
+      <div id="fullCategoryNews" class="news-grid"></div>
+    </div>
+  `;
+
+  const grid=document.getElementById("fullCategoryNews");
+  if(!grid) return;
+
+  if(items.length && window.makeCard){
+    items.forEach(n => grid.appendChild(window.makeCard(n)));
+  }else{
+    grid.innerHTML='<p class="status">इस श्रेणी में अभी कोई खबर उपलब्ध नहीं है।</p>';
+  }
+
+  history.replaceState({}, document.title, window.location.pathname + "?category=" + encodeURIComponent(category));
 }
 
 function openArticleFromNews(n){
@@ -1849,9 +2038,10 @@ function renderNews(){
   const indiaNews = news.filter(n => categoryLabel(n) === "देश");
 
   // हर सेक्शन में सिर्फ उसी category की खबरें दिखेंगी।
-  pratapNews.forEach(n => pratap.appendChild(makeCard(n)));
-  upNews.forEach(n => up.appendChild(makeCard(n)));
-  indiaNews.forEach(n => india.appendChild(makeCard(n)));
+  // Homepage पर हर category में केवल 5 खबरें दिखें।
+  if(pratap) pratapNews.slice(0,5).forEach(n => pratap.appendChild(makeCard(n)));
+  if(up) upNews.slice(0,5).forEach(n => up.appendChild(makeCard(n)));
+  if(india) indiaNews.slice(0,5).forEach(n => india.appendChild(makeCard(n)));
 
   if(!pratapNews.length){
     pratap.innerHTML = '<p class="status">प्रतापगढ़ की अभी कोई खबर उपलब्ध नहीं है।</p>';
