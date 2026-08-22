@@ -402,7 +402,14 @@ function friendlyAuthError(code){
   return map[code] || "कृपया Email और Password जाँचें।";
 }
 
-$("logoutBtn").addEventListener("click",()=>signOut(auth));
+$("logoutBtn").addEventListener("click",async()=>{
+  try{
+    await signOut(auth);
+    window.location.href="https://trinetrachannel.in/";
+  }catch(err){
+    console.error(err);
+  }
+});
 
 $("draftBtn").addEventListener("click",async()=>{
   hide("saveError");
@@ -725,7 +732,6 @@ onAuthStateChanged(auth,user=>{
     $("login").style.display="none";
     $("admin").style.display="block";
     $("newsListCard").style.display="block";
-    loadDraft();
     loadNews();
   }else{
     $("login").style.display="block";
