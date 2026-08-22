@@ -1457,10 +1457,25 @@ body{
   .tn-article-title{font-size:24px}
 }
 
+
+.direct-article-mode #home{display:none !important;}
+.direct-article-mode #sharedNewsPage{display:block !important;}
+
 </style>
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8892976990257509"
 crossorigin="anonymous"></script>
+
+<script>
+(function(){
+  try{
+    if(new URLSearchParams(window.location.search).has("news")){
+      document.documentElement.classList.add("direct-article-mode");
+    }
+  }catch(e){}
+})();
+</script>
+
 </head>
 
 <body>
@@ -2900,7 +2915,7 @@ function loadNews(){
       .filter(n => n.status !== "draft");
     window.allNews = allNews;
     renderNews();
-    openSharedPageDirect();
+    await openSharedPageDirect();
   }catch(err){
     console.error("Firebase news load error:", err);
     document.querySelectorAll(".news-grid,.side-news").forEach(el=>{
