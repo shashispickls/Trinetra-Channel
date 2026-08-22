@@ -949,6 +949,47 @@ crossorigin="anonymous"></script>
   }catch(e){}
 })();
 </script>
+
+<script>
+function goHomePage(){
+  try{
+    const home = document.getElementById("home");
+    const article = document.getElementById("sharedNewsPage");
+
+    if(article) article.style.display = "none";
+    if(home) home.style.display = "block";
+
+    if(typeof currentNewsForShare !== "undefined"){
+      currentNewsForShare = null;
+    }
+
+    // Remove article query/hash without reloading the site.
+    window.history.replaceState({}, document.title, window.location.pathname);
+    window.scrollTo(0,0);
+    document.title = "Trinetra Channel — हर खबर पर हमारी नज़र";
+  }catch(e){
+    // Absolute fallback: reload the homepage.
+    window.location.href = "/";
+  }
+}
+</script>
+
+
+<script>
+function goToSection(id){
+  const article = document.getElementById("sharedNewsPage");
+  const home = document.getElementById("home");
+  if(article) article.style.display = "none";
+  if(home) home.style.display = "block";
+
+  const el = document.getElementById(id);
+  if(el){
+    history.replaceState({}, document.title, window.location.pathname + "#" + id);
+    setTimeout(() => el.scrollIntoView({behavior:"smooth", block:"start"}), 0);
+  }
+}
+</script>
+
 </head>
 
 <body>
@@ -1001,10 +1042,10 @@ crossorigin="anonymous"></script>
 <nav class="nav">
     <div class="nav-inner">
 
-        <a href="#home">होम</a>
-        <a href="#pratapgarh">प्रतापगढ़</a>
-        <a href="#up">उत्तर प्रदेश</a>
-        <a href="#india">देश</a>
+        <a href="#" onclick="goHomePage();return false;">होम</a>
+        <a href="#pratapgarh" onclick="goToSection('pratapgarh');return false;">प्रतापगढ़</a>
+        <a href="#up" onclick="goToSection('up');return false;">उत्तर प्रदेश</a>
+        <a href="#india" onclick="goToSection('india');return false;">देश</a>
 
     </div>
 </nav>
@@ -1036,7 +1077,7 @@ crossorigin="anonymous"></script>
 
 
 <section id="sharedNewsPage" style="display:none;max-width:900px;margin:18px auto 40px;padding:0 15px;">
-  <a href="#" id="sharedHomeLink" style="display:inline-block;margin-bottom:14px;color:#b91c1c;font-weight:800;text-decoration:none;">← होम पर वापस जाएँ</a>
+  <a href="/" id="sharedHomeLink" onclick="goHomePage();return false;">← होम पर वापस जाएँ</a>
   <div id="sharedNewsMount"></div>
   <div style="margin:14px 0 18px;display:flex;gap:10px;flex-wrap:wrap;">
     <button type="button" onclick="shareCurrentNews()" style="background:#b91c1c;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:800;cursor:pointer;">📤 खबर शेयर करें</button>
@@ -1690,9 +1731,10 @@ function openArticleFromNews(n){
 
   const category = categoryLabel(n);
   const date = newsDate(n);
-  const photos = Array.isArray(n.photos) && n.photos.length
-    ? n.photos.filter(Boolean)
-    : (n.photo ? [n.photo] : []);
+  // Use the same photo resolver as the homepage cards, so whichever
+  // Firebase photo field the existing news uses is shown here too.
+  const mainPhoto = getPhoto(n);
+  const photos = mainPhoto ? [mainPhoto] : [];
 
   mount.innerHTML = `
     <article class="tn-article-main">
@@ -1735,16 +1777,22 @@ function openArticleFromNews(n){
   // Show the article's actual Firebase photo.
   const hero = document.getElementById("pageArticleHero");
   if(photos[0]){
-    setNewsImage(hero, photos[0]);
     hero.style.display = "block";
+    // setNewsImage() lives inside the Firebase module, so use the resolved
+    // URL directly here. This is the same resolved photo used by the cards.
+    hero.src = photos[0];
+    hero.onerror = function(){
+      this.style.display = "none";
+      console.error("Article photo failed:", photos[0]);
+    };
   }
 
   // Show the other news below the advertisement.
   const related = document.getElementById("pageRelatedNews");
   if(related){
     related.innerHTML = "";
-    const others = allNews.filter(x => x.id !== n.id).slice(0, 6);
-    others.forEach(r => related.appendChild(makeCard(r)));
+    const others = (window.allNews || []).filter(x => x.id !== n.id).slice(0, 6);
+    others.forEach(r => { if(window.makeCard) related.appendChild(window.makeCard(r)); });
     if(!others.length){
       related.innerHTML = '<p class="status">अभी कोई अन्य खबर उपलब्ध नहीं है।</p>';
     }
@@ -2264,6 +2312,7 @@ async function loadNews(){
       .map(d => ({id:d.id,...d.data()}))
       .filter(n => n.status !== "draft");
     window.allNews = allNews;
+window.makeCard = makeCard;
     renderNews();
     await openSharedPageDirect();
   }catch(err){
@@ -2278,6 +2327,8 @@ window.allNews = allNews;
 loadNews();
 loadAdvertisements();
 </script>
+
+
 
 </body>
 </html>
