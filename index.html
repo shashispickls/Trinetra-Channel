@@ -927,10 +927,24 @@ linear-gradient(135deg,#9ca3af,#1f2937);}
 
 .news-thumb{overflow:hidden;position:relative;}
 .news-thumb img{position:absolute;inset:0;width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;}
+
+.direct-article-mode #home{display:none !important;}
+.direct-article-mode #sharedNewsPage{display:block !important;}
+
 </style>
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8892976990257509"
 crossorigin="anonymous"></script>
+
+<script>
+(function(){
+  try{
+    if(new URLSearchParams(window.location.search).has("news")){
+      document.documentElement.classList.add("direct-article-mode");
+    }
+  }catch(e){}
+})();
+</script>
 </head>
 
 <body>
@@ -1688,11 +1702,87 @@ function openArticle(title, category, text, photo, date, newsItem){
 }
 
 function openArticleFromNews(n){
+  if(!n) return;
   currentNewsForShare = n;
-  const cat = window.categoryLabel ? window.categoryLabel(n) : (n.category || "समाचार");
-  const photo = window.getPhoto ? window.getPhoto(n) : (n.photo || "");
-  const date = window.newsDate ? window.newsDate(n) : (n.date || "ताजा खबर");
-  openArticle(n.title || "बिना शीर्षक", cat, n.body || "", photo, date, n);
+
+  // Open the article inside the page instead of the popup.
+  const home = document.getElementById("home");
+  const page = document.getElementById("sharedNewsPage");
+  const mount = document.getElementById("sharedNewsMount");
+
+  if(!page || !mount){
+    return;
+  }
+
+  if(home) home.style.display = "none";
+  page.style.display = "block";
+
+  const category = categoryLabel(n);
+  const date = newsDate(n);
+  const photos = Array.isArray(n.photos) && n.photos.length
+    ? n.photos.filter(Boolean)
+    : (n.photo ? [n.photo] : []);
+
+  mount.innerHTML = `
+    <article class="tn-article-main">
+      <div class="tn-breadcrumb">Trinetra Channel • ${category}</div>
+      <span class="tn-article-category">${category}</span>
+      <h1 class="tn-article-title"></h1>
+      <div class="tn-article-meta"></div>
+
+      <div class="tn-article-share">
+        <button type="button" class="tn-share-btn red" onclick="shareCurrentNews()">📤 खबर शेयर करें</button>
+        <button type="button" class="tn-share-btn dark" onclick="copyCurrentNewsLink()">🔗 Link Copy</button>
+      </div>
+
+      <img class="tn-article-hero" id="pageArticleHero" style="display:none;" alt="">
+      <div class="tn-article-body" id="pageArticleBody"></div>
+    </article>
+
+    <div class="tn-side-box" style="margin-top:18px;">
+      <h2 class="tn-side-title">Advertisement</h2>
+      <div class="tn-ad-box">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;min-height:180px"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
+    <div class="tn-related-section">
+      <div class="section-title"><h2>📰 बाकी खबरें</h2></div>
+      <div id="pageRelatedNews" class="news-grid"></div>
+    </div>
+  `;
+
+  const titleEl = mount.querySelector(".tn-article-title");
+  const metaEl = mount.querySelector(".tn-article-meta");
+  const hero = document.getElementById("pageArticleHero");
+  const body = document.getElementById("pageArticleBody");
+
+  titleEl.textContent = n.title || "बिना शीर्षक";
+  metaEl.textContent = "🕒 " + date + " | 📰 Trinetra Channel";
+  body.textContent = n.body || "";
+
+  if(photos[0]){
+    setNewsImage(hero, photos[0]);
+    hero.style.display = "block";
+  }
+
+  const related = document.getElementById("pageRelatedNews");
+  if(related){
+    related.innerHTML = "";
+    allNews.filter(x => x.id !== n.id).slice(0,6).forEach(r => {
+      related.appendChild(makeCard(r));
+    });
+  }
+
+  try{
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  }catch(e){}
+
+  window.scrollTo({top:0, behavior:"smooth"});
+  document.title = (n.title || "खबर") + " | Trinetra Channel";
 }
 
 /* ARTICLE CLOSE */
@@ -2179,64 +2269,16 @@ async function loadAdvertisements(){
 
 
 async function openSharedPageDirect(){
-  const id=new URLSearchParams(location.search).get("news");
+  const id = new URLSearchParams(location.search).get("news");
   if(!id) return;
 
   try{
-    const snap=await getDocs(collection(db,"news"));
-    const doc=snap.docs.find(d=>d.id===id);
+    const snap = await getDocs(collection(db,"news"));
+    const doc = snap.docs.find(d => d.id === id);
     if(!doc) return;
 
-    const n={id:doc.id,...doc.data()};
-    const home=document.getElementById("home");
-    const page=document.getElementById("sharedNewsPage");
-    const mount=document.getElementById("sharedNewsMount");
-    if(!page||!mount) return;
-
-    if(home) home.style.display="none";
-    page.style.display="block";
-
-    // Reuse the site's existing article renderer so its proven photo/Firebase logic is unchanged.
-    mount.innerHTML=`
-      <div class="article-modal-content" style="position:relative;display:block;max-width:900px;margin:0;">
-        <div class="article-category" id="shareCat"></div>
-        <h1 id="shareTitle"></h1>
-        <div class="article-date" id="shareDate"></div>
-        <div class="article-photo-gallery" id="shareGallery"></div>
-        <div class="article-text" id="shareBody"></div>
-      </div>`;
-
-    document.getElementById("shareCat").textContent=categoryLabel(n);
-    document.getElementById("shareTitle").textContent=n.title||"बिना शीर्षक";
-    document.getElementById("shareDate").textContent="Trinetra Channel | "+newsDate(n);
-    document.getElementById("shareBody").textContent=n.body||"";
-
-    const gallery=document.getElementById("shareGallery");
-    const photos=Array.isArray(n.photos)&&n.photos.length?n.photos:(n.photo?[n.photo]:[]);
-    photos.slice(0,3).forEach(src=>{
-      const img=document.createElement("img");
-      img.src=src;
-      img.alt=n.title||"खबर";
-      img.onerror=()=>img.remove();
-      gallery.appendChild(img);
-    });
-
-    currentNewsForShare=n;
-
-    const related=document.getElementById("sharedRelated");
-    related.innerHTML="";
-    allNews.filter(x=>x.id!==n.id).slice(0,6).forEach(r=>{
-      const card=makeCard(r);
-      related.appendChild(card);
-    });
-
-    document.getElementById("sharedHomeLink").onclick=(e)=>{
-      e.preventDefault();
-      location.href="/";
-    };
-
-    try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
-    document.title=(n.title||"खबर")+" | Trinetra Channel";
+    const n = {id:doc.id, ...doc.data()};
+    openArticleFromNews(n);
   }catch(e){
     console.error("share page error",e);
   }
@@ -2250,7 +2292,7 @@ async function loadNews(){
       .filter(n => n.status !== "draft");
     window.allNews = allNews;
     renderNews();
-    openSharedPageDirect();
+    await openSharedPageDirect();
   }catch(err){
     console.error("Firebase news load error:", err);
     document.querySelectorAll(".news-grid,.side-news").forEach(el=>{
